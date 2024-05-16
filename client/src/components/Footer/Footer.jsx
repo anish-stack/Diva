@@ -29,7 +29,7 @@ const Footer = () => {
                                 <a href="#" className="hover:underline">About Us
                                 </a>
                             </li> */}
-                            <p>Diva Story is a girlswear brand, inspired by the enchanting and imaginative world of young girls. It's a place where each piece tells a tale of magical adventures and dreamlike journeys, where reality feels like a distant memory. Our collections bring stories to life, celebrating the beauty and wonder of childhood with every stitch and detail.</p>
+                            <p>sumitra impex Is The Owner Of Diva Story... is a girlswear brand, inspired by the enchanting and imaginative world of young girls. It's a place where each piece tells a tale of magical adventures and dreamlike journeys, where reality feels like a distant memory. Our collections bring stories to life, celebrating the beauty and wonder of childhood with every stitch and detail.</p>
                             {/* <p className='mt-2 '> <b className='text-black'>Adderss :</b> G-191 Prashant Vihar Sector 14, Near By Indian Petrol Pump Outer Ring Road, Delhi -110085</p> */}
                             {/* <p className='mt-1 whitespace-nowrap'><b className='text-black'>Contact Details :</b> +91- 9910180546 | 9717139144</p> */}
                             {/* <li className="mb-4">
