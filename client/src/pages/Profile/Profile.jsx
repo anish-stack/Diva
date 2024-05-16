@@ -26,7 +26,7 @@ const Profile = () => {
 
     const handleFindMyOrder = async () => {
         try {
-            const response = await axios.get('http://localhost:4000/api/get-My-Orders', {
+            const response = await axios.get('https://api.thedivastory.com/api/get-My-Orders', {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

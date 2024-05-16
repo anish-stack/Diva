@@ -75,7 +75,7 @@ const CheckOut = () => {
         }
 
         try {
-            const response = await axios.post('http://localhost:4000/api/Make-Orders', formData, {
+            const response = await axios.post('https://api.thedivastory.com/api/Make-Orders', formData, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

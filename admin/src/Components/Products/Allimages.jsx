@@ -9,7 +9,7 @@ const AllImages = () => {
 
     const fetchImages = async () => {
         try {
-            const response = await axios.get('http://localhost:4000/api/All-images');
+            const response = await axios.get('https://api.thedivastory.com/api/All-images');
             setFetchedImages(response.data.reverse());
 
         } catch (error) {
@@ -25,7 +25,7 @@ const AllImages = () => {
         try {
             console.log(imageId, albumId)
             // Send DELETE request to delete the image
-            const res = await axios.delete(`http://localhost:4000/api/image/${imageId}`);
+            const res = await axios.delete(`https://api.thedivastory.com/api/image/${imageId}`);
             // After successful deletion, update state to reflect changes
             console.log(res.data)
             toast.success('Image Deleted')

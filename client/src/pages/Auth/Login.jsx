@@ -32,7 +32,7 @@ const Login = () => {
 
 
         try {
-            const response = await axios.post('http://localhost:4000/api/login', formData);
+            const response = await axios.post('https://api.thedivastory.com/api/login', formData);
             console.log(response.data);
             toast.success('Login Successful', {
                 style: {

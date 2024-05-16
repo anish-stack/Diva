@@ -8,7 +8,7 @@ const Contacts = () => {
   useEffect(() => {
     const fetchContacts = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/getContact');
+        const response = await axios.get('https://api.thedivastory.com/api/getContact');
         setContacts(response.data);
         setLoading(false);
       } catch (error) {

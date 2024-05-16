@@ -23,7 +23,7 @@ const Shipped = () => {
     e.preventDefault();
     try {
       console.log(formData);
-      const response = await axios.post(`http://localhost:4000/api/Order-Ship/${id}`, formData, {
+      const response = await axios.post(`https://api.thedivastory.com/api/Order-Ship/${id}`, formData, {
         headers: {
           'Content-Type': 'application/json'
         }

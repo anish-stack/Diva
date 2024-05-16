@@ -7,7 +7,7 @@ function ShipLogin() {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:4000/api/Ship-Rocket-login', {
+            const response = await axios.post('https://api.thedivastory.com/api/Ship-Rocket-login', {
                 email: Email,
                 password: Password
             });

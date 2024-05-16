@@ -12,7 +12,7 @@ const Allproducts = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:4000/api/get-products"
+          "https://api.thedivastory.com/api/get-products"
         );
         setProducts(response.data.data.reverse());
         console.log(response.data.data);
@@ -27,7 +27,7 @@ const Allproducts = () => {
 
   const handleDelete = async (id) => {
     try {
-      const res = await axios.delete(`http://localhost:4000/api/delete-products/${id}`)
+      const res = await axios.delete(`https://api.thedivastory.com/api/delete-products/${id}`)
       console.log(res.data)
       setProducts(products.filter(products => products._id !== id));
       toast.success('Product Deleted')

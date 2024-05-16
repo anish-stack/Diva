@@ -12,7 +12,7 @@ function ProductPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/getProductByCategoreies/${drop}`);
+        const response = await axios.get(`https://api.thedivastory.com/api/getProductByCategoreies/${drop}`);
         console.log(response.data.data);
         setData(response.data.data);
       } catch (error) {

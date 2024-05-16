@@ -8,7 +8,7 @@ const AllCategories = () => {
   const [isLoading, setIsLoading] = useState(true);
   const fetchData = async () => {
     try {
-      const response = await axios.get('http://localhost:4000/api/get-category');
+      const response = await axios.get('https://api.thedivastory.com/api/get-category');
 
       setCategories(response.data.data);
 
@@ -33,7 +33,7 @@ const AllCategories = () => {
 
   const handleDeleteCategory = async (id) => {
     try {
-      const response = await axios.delete(`http://localhost:4000/api/delete-category/${id}`);
+      const response = await axios.delete(`https://api.thedivastory.com/api/delete-category/${id}`);
       console.log('Category deleted successfully:', id);
       console.log(response.data);
       fetchData();

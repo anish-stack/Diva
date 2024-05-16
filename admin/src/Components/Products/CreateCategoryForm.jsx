@@ -39,7 +39,7 @@ const CreateCategoryForm = () => {
 
       console.log(formDataToSend)
       const response = await axios.post(
-        "http://localhost:4000/api/create-category",
+        "https://api.thedivastory.com/api/create-category",
         formDataToSend,{
           headers: {
             'Content-Type': 'multipart/form-data'

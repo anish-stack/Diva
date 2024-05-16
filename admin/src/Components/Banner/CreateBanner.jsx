@@ -37,7 +37,7 @@ const CreateBanner = () => {
       formDataToSend.append('images', formData.file); // Append file
       console.log(formDataToSend)
       const response = await axios.post(
-        "http://localhost:4000/api/create-banners",
+        "https://api.thedivastory.com/api/create-banners",
         formDataToSend,{
           headers: {
             'Content-Type': 'multipart/form-data'

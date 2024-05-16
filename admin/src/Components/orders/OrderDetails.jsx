@@ -28,7 +28,7 @@ const OrderDetails = () => {
 
   // const handleStatusUpdate = async () => {
   //   try {
-  //     const res = await axios.post(`http://localhost:4000/api/update-order`, {
+  //     const res = await axios.post(`https://api.thedivastory.com/api/update-order`, {
   //       status: newStatus,
   //       orderId: id
   //     });
@@ -45,7 +45,7 @@ const OrderDetails = () => {
   }
   // const handlePrint = async (id) => {
   //   try {
-  //     const res = await axios.get(`http://localhost:4000/api/finduserbyid/${id}`);
+  //     const res = await axios.get(`https://api.thedivastory.com/api/finduserbyid/${id}`);
   //     console.log(res.data.data);
   //     setUser(res.data.data)
   //   } catch (error) {

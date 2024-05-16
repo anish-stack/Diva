@@ -6,7 +6,7 @@ const Footer = () => {
     const [items, setItems] = useState()
     const handleFetchMainCategorey = async () => {
         try {
-            const res = await axios.get('http://localhost:4000/api/get-all-main-category')
+            const res = await axios.get('https://api.thedivastory.com/api/get-all-main-category')
             console.log(res.data.data)
             setItems(res.data.data)
         } catch (error) {

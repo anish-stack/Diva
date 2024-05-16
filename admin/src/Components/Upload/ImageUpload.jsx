@@ -26,7 +26,7 @@ const ImageUpload = () => {
         formData.append('images', file);
       });
 
-      const response = await axios.post('http://localhost:4000/api/image', formData, {
+      const response = await axios.post('https://api.thedivastory.com/api/image', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

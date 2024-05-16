@@ -11,7 +11,7 @@ const Logins = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:4000/api/login', {
+      const response = await axios.post('https://api.thedivastory.com/api/login', {
         email: Email,
         password :Password
       });

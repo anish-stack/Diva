@@ -18,7 +18,7 @@ const CategorySlider = () => {
     const handleCategories= async()=>{
         try {
 
-            const response = await axios.get("http://localhost:4000/api/getAllCategorey")
+            const response = await axios.get("https://api.thedivastory.com/api/getAllCategorey")
             console.log(response.data);
             setCateg(response.data)
             

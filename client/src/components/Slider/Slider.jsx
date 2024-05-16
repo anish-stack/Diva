@@ -12,7 +12,7 @@ const CustomSlider = () => {
 
     const fetchActiveSlider = async () => {
         try {
-            const response = await axios.get('http://localhost:4000/api/get-Banners');
+            const response = await axios.get('https://api.thedivastory.com/api/get-Banners');
             setSlider(response.data.data);
             setLoading(false);
         } catch (error) {
