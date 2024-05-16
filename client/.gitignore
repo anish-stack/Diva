@@ -4,8 +4,7 @@ node_modules/
 # Ignore environment files
 .env
 
-# Ignore build output
-build/
+
 
 # Ignore dependency lock files
 yarn.lock
