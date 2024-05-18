@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from '@react-pdf/renderer';
 
 const AllCategoreybanner = () => {
     const [categories, setCategories] = useState([]);
@@ -13,7 +14,7 @@ const AllCategoreybanner = () => {
     
     const fetchDataDelete = async (id) => {
         try {
-            const response = await axios.delete(`http://localhost:4000/api/delete-redirect/${id}`);
+            const response = await axios.delete(`https://api.thedivastory.com/api/delete-redirect/${id}`);
             console.log(response.data)
             fetchData()
         } catch (error) {
@@ -22,7 +23,7 @@ const AllCategoreybanner = () => {
     };
     const fetchData = async () => {
         try {
-            const response = await axios.get('http://localhost:4000/api/all-redirect');
+            const response = await axios.get('https://api.thedivastory.com/api/all-redirect');
             setCategories(response.data.data);
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -40,7 +41,10 @@ const AllCategoreybanner = () => {
 
     return (
         <div className="container p-5 mx-auto">
-            <h1 className="text-2xl font-bold mb-4">All Category Banners</h1>
+    <div className='flex items-center justify-between'>
+    <h1 className="text-2xl font-bold mb-4">All Category Banners </h1>
+    <h1 className="text-xl py-2 px-2 bg-purple-500 cursor-pointer font-bold mb-4"><a href={'/Create-Category-Banners'}>+ Create Category Banners</a></h1>
+    </div>
             <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                     <tr>

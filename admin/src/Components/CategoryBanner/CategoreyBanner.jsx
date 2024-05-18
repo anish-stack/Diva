@@ -54,7 +54,7 @@ const CreateCategoryFormBanner = () => {
 
             console.log(formDataToSend)
             const response = await axios.post(
-                "http://localhost:4000/api/create-redirect",
+                "https://api.thedivastory.com/api/create-redirect",
                 formDataToSend, {
                 headers: {
                     'Content-Type': 'multipart/form-data'

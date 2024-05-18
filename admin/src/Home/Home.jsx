@@ -62,6 +62,8 @@ const Home = () => {
             <Route path="/Ship-login" element={<ShipLogin />} />
             <Route path="/Change-Order-Status/:id" element={<Shipped />} />
             <Route path="/Category-Banners" element={<AllCategoreybanner />} />
+            <Route path="/Create-Category-Banners" element={<CreateCategoryFormBanner />} />
+
 
 
 
