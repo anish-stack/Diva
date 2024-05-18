@@ -22,6 +22,8 @@ import CreateCategoryForm from "../Components/Products/CreateCategoryForm"
 import AllTags from "../Components/Products/AllTags"
 import CreateTags from "../Components/Products/CreateTags"
 import ShipLogin from "../Components/ShipLogin/ShipLogin"
+import CreateCategoryFormBanner from "../Components/CategoryBanner/CategoreyBanner"
+import AllCategoreybanner from "../Components/CategoryBanner/AllCategoreybanner"
 const Home = () => {
   return (
     <div className="w-full flex">
@@ -59,6 +61,8 @@ const Home = () => {
 
             <Route path="/Ship-login" element={<ShipLogin />} />
             <Route path="/Change-Order-Status/:id" element={<Shipped />} />
+            <Route path="/Category-Banners" element={<AllCategoreybanner />} />
+
 
 
 

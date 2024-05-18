@@ -7,6 +7,7 @@ const { isAuthenticatedUser } = require('../middlewares/auth')
 const { CreateOrder, checkStatus, GetMyOrders, getAllOrder, getSingleOrder, newPayment } = require('../controllers/OrderController')
 const { createBanner, createCategory, makeTag, getAllBanners, deleteBanner, getAllCategories, updateCategory, deleteCategory, getAllTags, updateTag, deleteTag, getOnlyMainCategory, getTitleByMainCategory } = require('../controllers/webpage')
 const { ShipRocketLogin, MakeOrderReadyToShip } = require('../controllers/Shiprocket')
+const { RedirectCategoryMake, GetAllRedirectCat, DeleteRedirectCategory } = require('../controllers/Redirect')
 
 const storage = multer.memoryStorage()
 const multerUploads = multer({ storage }).array('images')
@@ -41,6 +42,10 @@ routes.delete('/delete-tags/:id', deleteTag)
 routes.get('/get-all-main-category', getOnlyMainCategory)
 routes.get('/get-title/:MainCategory', getTitleByMainCategory)
 routes.get('/getProductByCategoreies/:Category',getProductByCategoreies)
+routes.post('/create-redirect',SingleUpload,RedirectCategoryMake)
+routes.get('/all-redirect',GetAllRedirectCat)
+routes.delete('/delete-redirect/:id',DeleteRedirectCategory)
+
 
 //====================ORDERS ROUTES=========================//
 routes.post('/Make-Orders', isAuthenticatedUser, CreateOrder)

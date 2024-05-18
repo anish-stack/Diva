@@ -56,11 +56,9 @@ const SingleProduct = () => {
         setNav1(sliderRef1);
         setNav2(sliderRef2);
     }, []);
-    const handleSmallImageClick = (imageSrc) => {
-        setProduct({
-            ...product,
-            img: imageSrc
-        });
+    const handleSmallImageClick = (image) => {
+        // Update the bigImage property with the clicked image path
+        setProduct({ ...product, bigImage: image });
     };
     const handleClickSizes = (sizes) => {
         // console.log(sizes.)
@@ -89,7 +87,7 @@ const SingleProduct = () => {
             // If no size is selected, default to the first size
             const selectedSize = product.sizes && product.sizes.length > 0 ? product.sizes[0] : null;
             const selectedColorIndex = selectedColorIndex || 0;
-            
+
             if (selectedSize) {
                 handleAddToCart(selectedSize, selectedColorIndex);
             } else {
@@ -104,7 +102,7 @@ const SingleProduct = () => {
 
     const handleAddToCart = (selectedSize, selectedColorIndex) => {
         // Construct the product object with selected size, color, and quantity
-        if(!selectedColor ){
+        if (!selectedColor) {
             console.log(sizesPrize)
             return toast.error('Please Choose Size and Colo')
         }
@@ -160,32 +158,69 @@ const SingleProduct = () => {
             {/* main-single-product */}
             <div className='max-w-screen-xl  mx-auto py-3 px-3 min-h-screen'>
                 <div className='grid grid-cols-1 md:grid-cols-2'>
-                    <div className=' w-full md:w-[600px]  h-[600px] flex md:space-x-3 '>
+                    <div className='w-full md:w-[600px] h-[600px] flex md:space-x-3'>
                         <div className='hidden md:block small-imgs mt-2 px-2'>
-                            <div className='w-32 mb-2 cursor-pointer h-[8.8rem]'><img onError={(e) => e.target.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"} onMouseEnter={() => handleSmallImageClick(product ? product.img : "")} src={product ? product.img : ""} className='w-full mb-2 h-full object-cover' alt="" /></div>
-                            <div className='w-32 mb-2 cursor-pointer h-[8.8rem]'><img onError={(e) => e.target.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"} onMouseEnter={() => handleSmallImageClick(product ? product.secondImg : "")} src={product ? product.secondImg : ""} className='w-full mb-2 h-full object-cover' alt="" /></div>
-                            <div className='w-32 mb-2 cursor-pointer h-[8.8rem]'><img onError={(e) => e.target.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"} onMouseEnter={() => handleSmallImageClick(product ? product.thirdImage : "")} src={product ? product.thirdImage : ""} className='w-full mb-2 h-full object-cover' alt="" /></div>
-                            <div className='w-32 mb-2 cursor-pointer h-[8.8rem]'><img onError={(e) => e.target.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"} onMouseEnter={() => handleSmallImageClick(product ? product.fourthImage : "")} src={product ? product.fourthImage : ""} className='w-full mb-2 h-full object-cover' alt="" /></div>
+                            <div className='w-32 mb-2 cursor-pointer h-[8.8rem]'>
+                                <img
+                                    onError={(e) => e.target.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"}
+                                    onMouseEnter={() => handleSmallImageClick(product ? product.img : "")}
+                                    src={product ? product.img : ""}
+                                    className='w-full mb-2 h-full object-cover'
+                                    alt=""
+                                />
+                            </div>
+                            <div className='w-32 mb-2 cursor-pointer h-[8.8rem]'>
+                                <img
+                                    onError={(e) => e.target.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"}
+                                    onMouseEnter={() => handleSmallImageClick(product ? product.secondImg : "")}
+                                    src={product ? product.secondImg : ""}
+                                    className='w-full mb-2 h-full object-cover'
+                                    alt=""
+                                />
+                            </div>
+                            <div className='w-32 mb-2 cursor-pointer h-[8.8rem]'>
+                                <img
+                                    onError={(e) => e.target.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"}
+                                    onMouseEnter={() => handleSmallImageClick(product ? product.thirdImage : "")}
+                                    src={product ? product.thirdImage : ""}
+                                    className='w-full mb-2 h-full object-cover'
+                                    alt=""
+                                />
+                            </div>
+                            <div className='w-32 mb-2 cursor-pointer h-[8.8rem]'>
+                                <img
+                                    onError={(e) => e.target.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"}
+                                    onMouseEnter={() => handleSmallImageClick(product ? product.fourthImage : "")}
+                                    src={product ? product.fourthImage : ""}
+                                    className='w-full mb-2 h-full object-cover'
+                                    alt=""
+                                />
+                            </div>
                         </div>
                         <motion.div
-
-                            whileTap={{ scale: 0.9 }} className='w-full relative bigimage h-[600px]'>
+                            whileTap={{ scale: 0.9 }}
+                            className='w-full relative bigimage h-[600px]'
+                        >
                             <img
-                                src={product && product.img ? product.img : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"}
+                                src={product && product.bigImage ? product.bigImage : (product && product.fourthImage ? product.img : "")}
                                 className='w-full h-full object-cover object-center'
                                 alt=""
                             />
+
                             <div className='tag'>
-                                {product ? product.percentage : ""}
+                                {product ? product.percentage : ""}%
                             </div>
                         </motion.div>
-
                     </div>
                     <div className=' md:hidden flex gap-2 small-imgs mt-2 px-2'>
-                        <div className=' w-[4rem] h-[4rem] md:w-32 mb-2 cursor-pointer md:h-[8.8rem]'><img onError={(e) => e.target.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"} onMouseEnter={() => handleSmallImageClick(product ? product.img : "")} src={product ? product.img : ""} className='w-full mb-2 h-full object-cover' alt="" /></div>
-                        <div className=' w-[4rem] h-[4rem] md:w-32 mb-2 cursor-pointer md:h-[8.8rem]'><img onError={(e) => e.target.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"} onMouseEnter={() => handleSmallImageClick(product ? product.secondImg : "")} src={product ? product.secondImg : ""} className='w-full mb-2 h-full object-cover' alt="" /></div>
-                        <div className=' w-[4rem] h-[4rem] md:w-32 mb-2 cursor-pointer md:h-[8.8rem]'><img onError={(e) => e.target.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"} onMouseEnter={() => handleSmallImageClick(product ? product.thirdImage : "")} src={product ? product.thirdImage : ""} className='w-full mb-2 h-full object-cover' alt="" /></div>
-                        <div className=' w-[4rem] h-[4rem] md:w-32 mb-2 cursor-pointer md:h-[8.8rem]'><img onError={(e) => e.target.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"} onMouseEnter={() => handleSmallImageClick(product ? product.fourthImage : "")} src={product ? product.fourthImage : ""} className='w-full mb-2 h-full object-cover' alt="" /></div>
+                        <div className=' w-[4rem] h-[4rem] md:w-32 mb-2 cursor-pointer md:h-[8.8rem]'><img onError={(e) => e.target.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"} onMouseEnter={() => handleSmallImageClick(product ? product.img : "")}
+                            src={product ? product.img : ""} className='w-full mb-2 h-full object-cover' alt="" /></div>
+                        <div className=' w-[4rem] h-[4rem] md:w-32 mb-2 cursor-pointer md:h-[8.8rem]'><img onError={(e) => e.target.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"} onMouseEnter={() => handleSmallImageClick(product ? product.secondImg : "")}
+                            src={product ? product.secondImg : ""} className='w-full mb-2 h-full object-cover' alt="" /></div>
+                        <div className=' w-[4rem] h-[4rem] md:w-32 mb-2 cursor-pointer md:h-[8.8rem]'><img onError={(e) => e.target.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"} onMouseEnter={() => handleSmallImageClick(product ? product.thirdImage : "")}
+                            src={product ? product.thirdImage : ""} className='w-full mb-2 h-full object-cover' alt="" /></div>
+                        <div className=' w-[4rem] h-[4rem] md:w-32 mb-2 cursor-pointer md:h-[8.8rem]'><img onError={(e) => e.target.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"} onMouseEnter={() => handleSmallImageClick(product ? product.fourthImage : "")}
+                            src={product ? product.fourthImage : ""} className='w-full mb-2 h-full object-cover' alt="" /></div>
                     </div>
                     <div className='w-full'>
                         <div className=' min-h-screen'>
@@ -233,15 +268,15 @@ const SingleProduct = () => {
                             </div>
 
                             <div className='sizes flex items-start gap-3 mt-2'>
-                            {product && product.sizes.map((size, index) => (
-                <div
-                    onClick={() => handleClickSizes(size)}
-                    className={`bg-[#9680A6] rounded-[10px] cursor-pointer py-1 px-5 text-white ${selectedSize === size ? 'bg-green-400' : ''}`}
-                    key={index}
-                >
-                    {size.size}
-                </div>
-            ))}
+                                {product && product.sizes.map((size, index) => (
+                                    <div
+                                        onClick={() => handleClickSizes(size)}
+                                        className={`bg-[#9680A6] rounded-[10px] cursor-pointer py-1 px-5 text-white ${selectedSize === size ? 'bg-green-400' : ''}`}
+                                        key={index}
+                                    >
+                                        {size.size}
+                                    </div>
+                                ))}
                             </div>
 
                             <div className='flex  mt-5 items-start justify-between'>

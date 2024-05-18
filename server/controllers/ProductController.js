@@ -57,7 +57,6 @@ exports.createProducts = async (req, res) => {
         for (let index = 0; index < files.length; index++) {
             const file = files[index];
             const tempFilePath = path.join(__dirname, `temp_${file.originalname}`);
-
             // Write the buffer data to the temporary file
             await fs.writeFile(tempFilePath, file.buffer);
 

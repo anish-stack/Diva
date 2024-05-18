@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './collection.css'
 import { Link } from 'react-router-dom'
 import img from './Beige Minimalist Fashion Sale Instagram Story (1).png'
 import img2 from './Beige Minimalist Fashion Sale Instagram Story.png'
 import img3 from './op.png'
 import img4 from './sa.png'
-
+import axios from 'axios' 
 
 const EssintalCollection = () => {
     const Data = [
@@ -34,6 +34,18 @@ const EssintalCollection = () => {
             href:"/Womens-Sarees"
         }
     ]
+    const [ex,setEx] = useState([])
+    const fetchData = async ()=>{
+        try {
+            const res = await axios.get('http://localhost:4000/api/all-redirect')
+            setEx(res.data.data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    useEffect(()=>{
+        fetchData()
+    },[])
     return (
         <div className='w-full mt-12'>
             <div className='text-center py-2 md:py-5'>
@@ -42,12 +54,12 @@ const EssintalCollection = () => {
             </div>
             <div className='mt-5 p-2'>
                 <div className='w-full grid grid-cols-2 md:grid-cols-4 space-x-3 gap-2'>
-                    {Data.map((item, index) => (
+                    {ex && ex.map((item, index) => (
                         <div className=' p-1 md:p-2' key={index}>
-                            <Link className='relative'>
-                                <img src={item.img} className='w-full imgs-collections h-64 md:h-96 object-cover object-top' alt={item.collectionName} />
+                            <Link to={`/Collection/${item.OneWhichCategoryRedirect}`} className='relative'>
+                                <img src={item.CatImg} className='w-full imgs-collections h-64 md:h-96 object-cover object-top' alt={item.collectionName} />
 
-                                <button className=' whitespace-nowrap collectionbtns'>{item.collectionName}</button>
+                                <button className=' whitespace-nowrap collectionbtns'>{item.title}</button>
 
                             </Link>
                         </div>
