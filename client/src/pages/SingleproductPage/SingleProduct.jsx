@@ -102,10 +102,7 @@ const SingleProduct = () => {
 
     const handleAddToCart = (selectedSize, selectedColorIndex) => {
         // Construct the product object with selected size, color, and quantity
-        if (!selectedColor) {
-            console.log(sizesPrize)
-            return toast.error('Please Choose Size and Colo')
-        }
+
         const selectedProduct = {
             ...product,
             size: selectedSize.size,
@@ -208,7 +205,7 @@ const SingleProduct = () => {
                             />
 
                             <div className='tag'>
-                                {product ? product.percentage : ""}%
+                                {product ? product.percentage : ""}
                             </div>
                         </motion.div>
                     </div>

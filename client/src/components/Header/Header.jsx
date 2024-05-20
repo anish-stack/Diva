@@ -77,7 +77,7 @@ const Header = () => {
                         {item && item.map((item, index) => (
 
                             <li className='font-medium text-gray-900 text-lg ' key={index}>
-                                <Link to={`/Collection/${item}`}  onClick={handleClose}  className='font-medium cursor-pointer relative text-gray-900 text-lg ' >{item}</Link>
+                                <Link to={`/Product-page/${item}`}  onClick={handleClose}  className='font-medium cursor-pointer relative text-gray-900 text-lg ' >{item}</Link>
                             </li>
 
                         ))}

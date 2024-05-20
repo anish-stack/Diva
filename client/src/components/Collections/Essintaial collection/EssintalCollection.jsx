@@ -72,7 +72,7 @@ const EssentialCollection = () => {
                     {ex.map((item, index) => (
                         <SwiperSlide key={index}>
                             <div className="p-1 md:p-2">
-                                <Link to={`/Collection/${item.OneWhichCategoryRedirect}`} className="flex items-center justify-center relative">
+                                <Link to={`/Product-page/${item.OneWhichCategoryRedirect}`} className="flex items-center justify-center relative">
                                     <img src={item.CatImg} className="w-full imgs-collections h-64 md:h-96 object-cover object-top" alt={item.title} />
                                     <button className="whitespace-nowrap collectionbtns">{item.title}</button>
                                 </Link>

@@ -40,7 +40,7 @@ const NewArrival = () => {
                     {data && data.slice(0,5).reverse().map((item, index) => (
                             
                         <div className=' p-1 md:p-2' key={index}>
-                            {console.log(item)}
+                           
                             <div className='relative first-img '>
                                 <Link className='relative first-img' to={`/single-product/${item._id}/${item.productName}`}>
 
