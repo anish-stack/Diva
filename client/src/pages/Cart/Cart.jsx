@@ -105,7 +105,7 @@ const Cart = () => {
         e.preventDefault(); // Prevent default form submission behavior
         console.log(formData);
         try {
-          const res = await axios.post('http://localhost:4000/api/apply-vouchers', formData);
+          const res = await axios.post('https://api.thedivastory.com/api/apply-vouchers', formData);
           const RoundTotal = Math.round(res.data.data.discountedTotal)
           setLastprice(RoundTotal);
           setmessage('Coupon is Applied Successfull')

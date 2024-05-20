@@ -25,7 +25,7 @@ const EditProject = () => {
   useEffect(() => {
     const fetchMainData = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/get-products-name/${name}/${id}`);
+        const response = await axios.get(`https://api.thedivastory.com/api/get-products-name/${name}/${id}`);
         const fetchedData = response.data.data;
         console.log(fetchedData);
         // Update formdata with fetched data
@@ -120,7 +120,7 @@ const EditProject = () => {
     console.log(formdata)
     try {
       // Make Axios request
-      const response = await axios.patch(`http://localhost:4000/api/update-products/${id}`, formdata);
+      const response = await axios.patch(`https://api.thedivastory.com/api/update-products/${id}`, formdata);
       console.log(response.data); // Assuming you want to log the response
       toast.success('Product Updated');
       setLoad(false);

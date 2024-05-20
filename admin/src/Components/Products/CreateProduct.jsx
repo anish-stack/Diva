@@ -108,7 +108,7 @@ const CreateProduct = () => {
     // console.log(formdata)
     try {
       // Make Axios request
-      const response = await axios.post('http://localhost:4000/api/create-products', formData, {
+      const response = await axios.post('https://api.thedivastory.com/api/create-products', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

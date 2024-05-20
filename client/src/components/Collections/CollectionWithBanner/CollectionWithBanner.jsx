@@ -8,7 +8,7 @@ const CollectionWithBanner = () => {
   const [banners,setBanners] = useState([])
   const fetchBanners = async()=>{
     try {
-      const res = await axios.get('http://localhost:4000/api/get-sales-Banners') 
+      const res = await axios.get('https://api.thedivastory.com/api/get-sales-Banners') 
       console.log(res.data.data)
       setBanners(res.data.data)
     } catch (error) {
