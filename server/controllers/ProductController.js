@@ -14,104 +14,102 @@ cloudinary.config({
 // Create Product 
 exports.createProducts = async (req, res) => {
     try {
-      // Check if files were uploaded
-      const files = req.files;
-  
-      const sizess = JSON.parse(req.body.sizes);
-      console.log(sizess);
-  
-      if (!files || files.length === 0) {
-        return res.status(400).json({
-          success: false,
-          error: "No files uploaded"
-        });
-      }
-//   
-    //   console.log(req.body);
-  
-      // Check for empty fields in req.body
-      const {
-        img, productName, secondImg, thirdImage, selectedCat, fourthImage,
-        discountPrice, mainPrice, percentage, collectionName, description,
-        SKU, availability, whatShowAtPercentage,categories, tags
-      } = req.body;
-  
-      const emptyFields = [];
-  
-      if (!productName) emptyFields.push('productName');
-      if (!percentage) emptyFields.push('percentage');
-      if (!collectionName) emptyFields.push('collectionName');
-      if (!description) emptyFields.push('description');
-      if (!SKU) emptyFields.push('SKU');
-      if (!availability) emptyFields.push('availability');
-      if (!categories) emptyFields.push('categories');
-  
-      if (emptyFields.length > 0) {
-        return res.status(400).json({
-          success: false,
-          error: "Please provide all required fields",
-          missingFields: emptyFields
-        });
-      }
-  
-      // Upload images to Cloudinary
-      const uploadedImages = [];
-      for (let index = 0; index < files.length; index++) {
-        const file = files[index];
-        const tempFilePath = path.join(__dirname, `temp_${file.originalname}`);
-        // Write the buffer data to the temporary file
-        await fs.writeFile(tempFilePath, file.buffer);
-  
-        // Upload the temporary file to Cloudinary
-        const uploadResult = await cloudinary.uploader.upload(tempFilePath, {
-          folder: 'diva story',
-          public_id: file.originalname
-        });
-  
-        // Push the secure URL of the uploaded image to the array
-        uploadedImages.push(uploadResult.secure_url);
-  
-        // Remove the temporary file after uploading
-        await fs.unlink(tempFilePath);
-      }
-  
-      // Create a new product instance
-      const newProduct = new Product({
-        img: uploadedImages[0],
-        productName,
-        sizes: sizess, // Assign the parsed sizes here
-        secondImg: uploadedImages[1] || uploadedImages[0],
-        thirdImage: uploadedImages[2] || uploadedImages[0],
-        fourthImage: uploadedImages[3] || uploadedImages[0],
-        discountPrice,
-        mainPrice,
-        whatShowAtPercentage,
-        percentage,
-        collectionName,
-        description,
-        SKU,
-        availability,
-        categories,
-        tags
-      });
-  
-      // Save the new product to the database
-      await newProduct.save();
-      console.log(`New`, newProduct);
-      res.status(200).json({
-        success: true,
-        msg: "Product created successfully",
-        data: newProduct
-      });
-    } catch (error) {
-      console.log(error);
-      res.status(500).json({
-        success: false,
-        error: "Internal server error"
-      });
-    }
-  };
+        // Check if files were uploaded
+        const files = req.files;
 
+        // Parse the sizes from the request body
+        const sizes = JSON.parse(req.body.sizes);
+        console.log(sizes);
+
+        if (!files || files.length === 0) {
+            return res.status(400).json({
+                success: false,
+                error: "No files uploaded"
+            });
+        }
+
+        // Check for empty fields in req.body
+        const {
+            productName, 
+            discountPrice, mainPrice, percentage, collectionName, description,
+            SKU, availability, whatShowAtPercentage, categories, tags
+        } = req.body;
+
+        const emptyFields = [];
+
+        if (!productName) emptyFields.push('productName');
+        if (!percentage) emptyFields.push('percentage');
+        if (!collectionName) emptyFields.push('collectionName');
+        if (!description) emptyFields.push('description');
+        if (!SKU) emptyFields.push('SKU');
+        if (!availability) emptyFields.push('availability');
+        if (!categories) emptyFields.push('categories');
+
+        if (emptyFields.length > 0) {
+            return res.status(400).json({
+                success: false,
+                error: "Please provide all required fields",
+                missingFields: emptyFields
+            });
+        }
+
+        // Upload images to Cloudinary
+        const uploadedImages = [];
+        for (let index = 0; index < files.length; index++) {
+            const file = files[index];
+            const tempFilePath = path.join(__dirname, `temp_${file.originalname}`);
+            // Write the buffer data to the temporary file
+            await fs.writeFile(tempFilePath, file.buffer);
+
+            // Upload the temporary file to Cloudinary
+            const uploadResult = await cloudinary.uploader.upload(tempFilePath, {
+                folder: 'diva story',
+                public_id: file.originalname
+            });
+
+            // Push the secure URL of the uploaded image to the array
+            uploadedImages.push(uploadResult.secure_url);
+
+            // Remove the temporary file after uploading
+            await fs.unlink(tempFilePath);
+        }
+
+        // Create a new product instance
+        const newProduct = new Product({
+            img: uploadedImages[0],
+            productName,
+            sizes, // Assign the parsed sizes here
+            secondImg: uploadedImages[1] || uploadedImages[0],
+            thirdImage: uploadedImages[2] || uploadedImages[0],
+            fourthImage: uploadedImages[3] || uploadedImages[0],
+            discountPrice,
+            mainPrice,
+            whatShowAtPercentage,
+            percentage,
+            collectionName,
+            description,
+            SKU,
+            availability,
+            categories,
+            tags
+        });
+
+        // Save the new product to the database
+        await newProduct.save();
+        console.log(`New`, newProduct);
+        res.status(200).json({
+            success: true,
+            msg: "Product created successfully",
+            data: newProduct
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            success: false,
+            error: "Internal server error"
+        });
+    }
+};
 
 // Get All Products
 exports.getAllProducts = async (req, res) => {
@@ -212,8 +210,8 @@ exports.filterProductsByTags = async (req, res) => {
     }
 };
 
-// Update Product
-exports.updateProduct = async (req, res) => {
+//  Update Product
+ exports.updateProduct = async (req, res) => {
     try {
         const { id } = req.params;
         const updateFields = {};
@@ -245,21 +243,7 @@ exports.updateProduct = async (req, res) => {
         if (availability !== undefined) updateFields.availability = availability;
         if (categories) updateFields.categories = categories;
         if (tags) updateFields.tags = tags;
-
-        // Handle the sizes array if provided
-        if (sizes && Array.isArray(sizes)) {
-            updateFields.sizes = sizes.map(size => {
-                const { colors, size: sizeLabel, discountPrice, mainPrice, _id, discountPercent } = size;
-                return {
-                    colors: colors || {},
-                    size: sizeLabel,
-                    discountPrice,
-                    mainPrice,
-                    _id,
-                    discountPercent
-                };
-            });
-        }
+        if (sizes) updateFields.sizes = sizes;
 
         // Update the product in the database
         const updatedProduct = await Product.findByIdAndUpdate(id, { $set: updateFields }, { new: true });

@@ -8,6 +8,8 @@ const { CreateOrder, checkStatus, GetMyOrders, getAllOrder, getSingleOrder, newP
 const { createBanner, createCategory, makeTag, getAllBanners, deleteBanner, getAllCategories, updateCategory, deleteCategory, getAllTags, updateTag, deleteTag, getOnlyMainCategory, getTitleByMainCategory } = require('../controllers/webpage')
 const { ShipRocketLogin, MakeOrderReadyToShip } = require('../controllers/Shiprocket')
 const { RedirectCategoryMake, GetAllRedirectCat, DeleteRedirectCategory } = require('../controllers/Redirect')
+const { createVoucher, getAllVouchers, activateVoucher, deactivateVoucher, deleteVoucher, applyVoucher } = require('../controllers/Voucher')
+const { createSalesBanner, getAllSalesBanners, deleteSalesBanner } = require('../controllers/SalesBanner')
 
 const storage = multer.memoryStorage()
 const multerUploads = multer({ storage }).array('images')
@@ -57,6 +59,18 @@ routes.get('/single-orders/:id', getSingleOrder)
 //====================SHIP-ROCKET  ROUTES=========================//
 routes.post('/Ship-Rocket-login',ShipRocketLogin)
 routes.post('/Order-Ship/:id',MakeOrderReadyToShip)
+// ====================VOUCHERS====================================//
+routes.get('/vouchers',getAllVouchers)
+routes.post('/apply-vouchers',applyVoucher)
 
+routes.post('/vouchers/create-vouchers',createVoucher)
+routes.put('/vouchers/activateVoucher/:id',activateVoucher)
+routes.put('/vouchers/deactivateVoucher/:id',deactivateVoucher)
+routes.delete('/vouchers/deleteVoucher/:id',deleteVoucher)
+
+// ======================Sales-Banner=======================//
+routes.post('/create-sales-banners', multerUploads, createSalesBanner)
+routes.get('/get-sales-Banners', getAllSalesBanners)
+routes.delete('/delete-sales-Banners/:id', deleteSalesBanner)
 
 module.exports = routes

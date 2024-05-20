@@ -24,7 +24,14 @@ import CreateTags from "../Components/Products/CreateTags"
 import ShipLogin from "../Components/ShipLogin/ShipLogin"
 import CreateCategoryFormBanner from "../Components/CategoryBanner/CategoreyBanner"
 import AllCategoreybanner from "../Components/CategoryBanner/AllCategoreybanner"
+import AllVouchers from "../Components/Vouchers/AllVouchers"
+import { useState } from "react"
+import CreateVoucher from "../Components/Vouchers/CreateVoucher"
+import SalesBanner from "../Components/salesBanner/SalesBanner"
+import CreateOfferBanner from "../Components/salesBanner/CreateofferBaner"
 const Home = () => {
+  const [vouchers, setVouchers] = useState([]);
+
   return (
     <div className="w-full flex">
         <div className="  z-10 w-[18%]  ">
@@ -63,6 +70,13 @@ const Home = () => {
             <Route path="/Change-Order-Status/:id" element={<Shipped />} />
             <Route path="/Category-Banners" element={<AllCategoreybanner />} />
             <Route path="/Create-Category-Banners" element={<CreateCategoryFormBanner />} />
+            <Route path="/Our-Vouchers" element={<AllVouchers />} />
+            <Route path="/Create-Vouchers" element={<CreateVoucher />} />
+            <Route path="/Create-Offer-Banner" element={<CreateOfferBanner />} />
+        
+            <Route path="/offer-Banner" element={<SalesBanner />} />
+            
+
 
 
 

@@ -30,13 +30,17 @@ const SingleProduct = () => {
         fetchSingleProduct();
     }, [fetchSingleProduct]);
     useEffect(() => {
-
+ 
+    
         window.scrollTo({
-            top: "0",
+            top: 0,
+            
             behavior: "smooth"
-        })
-
-    }, [id,name]);
+        });
+    
+    }, [id, name]);
+    
+    
 
 
 
@@ -68,7 +72,7 @@ const SingleProduct = () => {
 
     const handleAddToCartClick = () => {
         if (!selectedSize) {
-   
+
 
             if (selectedSize) {
                 handleAddToCart(selectedSize);
@@ -88,7 +92,7 @@ const SingleProduct = () => {
         const selectedProduct = {
             ...product,
             size: selectedSize,
-           
+
             quantity: quantity // Assuming quantity is already set elsewhere in your code
         };
 
@@ -151,7 +155,7 @@ const SingleProduct = () => {
 
             {/* main-single-product */}
             <div className='max-w-screen-xl  mx-auto py-3 px-3 min-h-screen'>
-                <div className='grid grid-cols-1 md:grid-cols-2'>
+                <div className='grid grid-cols-1 gap-3 md:grid-cols-2'>
                     <div className='w-full md:w-[600px h-full] md:h-[600px] flex md:space-x-3'>
                         <div className='hidden md:block small-imgs mt-2 px-2'>
                             <div className='w-32 mb-2 cursor-pointer h-[8.8rem]'>

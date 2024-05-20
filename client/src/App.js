@@ -25,12 +25,7 @@ import { useEffect } from 'react';
 // import ProductPage from './components/ProductPage/ProductPage';
 
 function App() {
-  useEffect(() => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-}, [window.location.pathname]);
+  
 
   return (
     <>

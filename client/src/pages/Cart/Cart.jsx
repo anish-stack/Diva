@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateQuantity, removeItem } from '../../store/slices/CartSlice';
-
+import axios from 'axios'
 import toast from 'react-hot-toast';
 const Cart = () => {
     const dispatch = useDispatch()
@@ -27,11 +27,8 @@ const Cart = () => {
         // toast.success("Item Removed");
     };
 
-    const Totalprices = Cart.reduce((total, item) => {
-        const totalPrice = total + (item.discountPrice * item.quantity);
-        return Math.round(totalPrice);
-    }, 0);
-    
+    const [LastPrice,setLastprice] = useState()
+
 
     const CheckOutWithData = async () => {
         if (!User.token) {
@@ -54,7 +51,7 @@ const Cart = () => {
         try {
             const CheckOutData = {
                 Items: Cart.map(item => ({
-                    image:item.img,
+                    image: item.img,
                     Productname: item.productName,
                     Size: item.size,
                     price: item.price,
@@ -62,8 +59,8 @@ const Cart = () => {
                     Quantity: item.quantity,
                     Categories: item.categories
                 })),
-                FinalPrice: Totalprices,
-                userInfo: JSON.stringify(User.user)
+                FinalPrice: LastPrice || Totalprices, 
+                                userInfo: JSON.stringify(User.user)
             };
 
             sessionStorage.setItem('checkOut', JSON.stringify(CheckOutData))
@@ -79,6 +76,47 @@ const Cart = () => {
         }
     };
 
+
+
+    const Totalprices = Cart.reduce((total, item) => {
+        const totalPrice = total + (item.discountPrice * item.quantity);
+        return Math.round(totalPrice);
+      }, 0);
+    console.log(Totalprices)
+    const [formData, setFormData] = useState({
+        CouponeCode: '',
+        orderTotal: 0 // Initialize orderTotal to 0
+      });
+      useEffect(() => {
+        // Set orderTotal to Totalprices once Totalprices is available
+        setFormData(prevState => ({
+          ...prevState,
+          orderTotal: Totalprices
+        }));
+      }, [Totalprices]);
+      const handleChange = (e) => {
+        setFormData(prevState => ({
+          ...prevState,
+          CouponeCode: e.target.value
+        }));
+      };
+    const [message,setmessage] = useState('')
+      const handleSubmit = async (e) => {
+        e.preventDefault(); // Prevent default form submission behavior
+        console.log(formData);
+        try {
+          const res = await axios.post('http://localhost:4000/api/apply-vouchers', formData);
+          const RoundTotal = Math.round(res.data.data.discountedTotal)
+          setLastprice(RoundTotal);
+          setmessage('Coupon is Applied Successfull')
+        } catch (error) {
+          console.log(error);
+          toast.error(error.response.data.error)
+          setmessage('')
+
+        }
+      };
+    
     return (
         <div className="min-h-screen bg-gray-100  pt-5">
             <h1 className="mb-10 text-center text-2xl font-bold">Cart <i className="ri-shopping-cart-2-fill"></i></h1>
@@ -128,10 +166,35 @@ const Cart = () => {
                         <p className="text-gray-700">Free</p>
                     </div>
                     <hr className="my-4" />
+
+                    <div className='mt-5'>
+                        <h2 className='text-xl font-semibold mb-3'>Apply Coupon</h2>
+                        <form onSubmit={handleSubmit}>
+                        <div className='flex items-center border border-gray-300 rounded'>
+                               
+                               
+                            </div>
+                            <div className='flex items-center border border-gray-300 rounded'>
+                                <input
+                                    type="text"
+                                    value={formData.CouponeCode}
+                                    name="CouponeCode"
+                                    onChange={handleChange}
+                                    className='w-full py-2 px-4 focus:outline-none'
+                                    placeholder="Enter coupon code"
+                                />
+                                <button type="submit" className='bg-blue-500 text-white py-2 px-4 rounded-r hover:bg-blue-600 focus:outline-none'>
+                                    Apply
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <p className='text-green-400 mt-1 mr-1'>{message || ''}</p>
+                    <hr className="my-4" />
                     <div className="flex justify-between">
                         <p className="text-lg font-bold">Total</p>
                         <div className="">
-                            <p className="mb-1 text-lg font-bold"><i className="ri-money-rupee-circle-fill"></i> {Totalprices}</p>
+                            <p className="mb-1 text-lg font-bold"><i className="ri-money-rupee-circle-fill"></i> { LastPrice || Totalprices}</p>
                             {/* <p className="text-sm text-gray-700">including VAT</p> */}
                         </div>
                     </div>

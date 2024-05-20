@@ -87,6 +87,7 @@ const CreateProduct = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoad(true);
+    console.log("Before Json",formdata.sizes)
     const sizesJSON = JSON.stringify(formdata.sizes);
     // Create a new FormData object
     const formData = new FormData();
@@ -253,7 +254,7 @@ const CreateProduct = () => {
         <div>
           <textarea value={formdata.description} onChange={handleChange} name="description" placeholder="description" className="block w-full mt-1 rounded-md border-gray-900 border-[1px] p-2 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50" />
         </div>
-      
+
         <button
           type="submit"
           disabled={load}

@@ -58,15 +58,17 @@ const Allproducts = () => {
           <tr className="bg-gray-100">
             <th className="border text-black border-gray-300 px-2 ">Image</th>
             <th className="border text-black border-gray-300 px-2 ">Product Name</th>
-            {/* <th className="border text-black border-gray-300 px-2 ">Original Price</th> */}
+            <th className="border text-black border-gray-300 px-2 ">Original Price</th>
+            <th className="border text-black border-gray-300 px-2 ">Discount Price</th>
+
             <th className="border text-black border-gray-300 px-2 ">Percentage</th>
-            <th className="border text-black border-gray-300 px-2 ">Collection Name</th>
+            {/* <th className="border text-black border-gray-300 px-2 ">Collection Name</th> */}
             <th className="border text-black border-gray-300 px-2 ">Description</th>
             <th className="border text-black border-gray-300 px-2 ">Availability</th>
             <th className="border text-black border-gray-300 px-2 ">SKU</th>
             
             <th className="border text-black border-gray-300 px-2 ">Category</th>
-            <th className="border text-black border-gray-300 px-2 ">Tags</th>
+            {/* <th className="border text-black border-gray-300 px-2 ">Tags</th> */}
             <th className="border text-black border-gray-300 px-2 ">Action</th>
 
 
@@ -82,15 +84,17 @@ const Allproducts = () => {
 
               </td>
               <td className="border w-[10px] text-blue-400 underline  border-gray-300 px-2 "><Link to={`/EditProducts/${product.collectionName}/${product._id}`}>{product.productName}</Link></td>
-              {/* <td className="border  w-[80px]  text-black  border-gray-300 px-2">{product.mainPrice}</td> */}
-              <td className="border text-black w-[80px]    border-gray-300 px-2">{product.percentage}</td>
-              <td className="border w-20 text-nowrap text-black  border-gray-300 px-2">{product.collectionName}</td>
+              <td className="border w-2 truncate whitespace-nowrap text-black  border-gray-300 px-2">{product.mainPrice}</td>
+              <td className="border w-2  text-black  border-gray-300 px-2">{product.discountPrice}</td>
+
+              <td className="border text-black w-[40px]    border-gray-300 px-1">{product.percentage}</td>
+              {/* <td className="border w-20 text-nowrap text-black  border-gray-300 px-2">{product.collectionName}</td> */}
               <td className="border text-black  border-gray-300  w-20 px-2">{truncateDescription(product.description)}</td>
               <td className="border w-16 text-black  border-gray-300 px-2">{product.availability ? 'Available' : 'Not Available'}</td>
-              <td className="border text-black w-20 h-16 overflow-hidden border-gray-300 text-nowrap px-2 ">  {product.SKU}</td>
-              <td className="border text-black w-20 h-16 overflow-hidden border-gray-300 text-nowrap px-2 ">{product.categories}</td>
-              <td className="border w-16 text-nowrap text-black border-gray-300 px-2">{product.tags || "N.A"}</td>
-              <td onClick={() => handleDelete(product._id)} className="border w-[120px] text-black border-gray-300 px-2 cursor-pointer hover:bg-gray-200 transition-colors duration-300">
+              <td className="border text-black w-10 h-8 overflow-hidden border-gray-300 text-nowrap px-2 ">  {product.SKU}</td>
+              <td className="border text-black w-10 h-8 overflow-hidden border-gray-300 text-nowrap px-2 ">{product.categories}</td>
+              {/* <td className="border w-16 text-nowrap text-black border-gray-300 px-2">{product.tags || "N.A"}</td> */}
+              <td onClick={() => handleDelete(product._id)} className="border w-[40px] text-black border-gray-300 px-2 cursor-pointer hover:bg-gray-200 transition-colors duration-300">
                 <button className="inline-block bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded">
                   Delete Product
                 </button>

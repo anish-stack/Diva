@@ -10,10 +10,8 @@ const productSchema = new mongoose.Schema({
     whatShowAtPercentage:{
         type:String
     },
-     sizes: {
-        type:[String]
-     },
-    secondImg: {
+    sizes: [{ type: String }],
+        secondImg: {
         type: String
 
     },
