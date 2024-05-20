@@ -66,14 +66,14 @@ const Header = () => {
 
             </div>
             {/* no touchable */}
-            <div className='navbar flex items-center whitespace-nowrap  bg-white  shadow-md justify-between p-2 gap-2'>
+            <div className='navbar flex items-center whitespace-nowrap  bg-white  shadow-md justify-around p-2 gap-2'>
                 <Link to={'/'} className='navbar-brand py-4 w-32'>
                     <img src={logo} className=' w-16' alt="This is Diva Story logo" />
                 </Link>
                 <nav className={`${showMenu ? 'showNavBar' : ''}`}>
                     <ul className='flex  md:items-center md:space-x-6'>
-                        <li onClick={handleClose} className='font-medium text-gray-900 text-lg '><Link to="/">Home</Link></li>
-                        <li onClick={handleClose} className='font-medium text-gray-900 text-lg '><Link to="/Shop">Shop</Link></li>
+                        {/* <li onClick={handleClose} className='font-medium text-gray-900 text-lg '><Link to="/">Home</Link></li> */}
+                        {/* <li onClick={handleClose} className='font-medium text-gray-900 text-lg '><Link to="/Shop">Shop</Link></li> */}
                         {item && item.map((item, index) => (
 
                             <li className='font-medium text-gray-900 text-lg ' key={index}>
@@ -87,9 +87,9 @@ const Header = () => {
                 </nav>
                 <div className='btns-ctas smhidden space-x-4'>
                     {User.token ? (
-                        <Link onClick={handleClose} to={'/Profile'}>Profile</Link>
+                        <Link className='text-lg' onClick={handleClose} to={'/Profile'}>Profile</Link>
                     ) : (
-                        <Link onClick={handleClose} to={'/sign-in'}>Sign In</Link>
+                        <Link className='text-lg' onClick={handleClose} to={'/sign-in'}>Sign In</Link>
                     )}
 
                     <Link onClick={handleClose} to={'/Shopping-Cart'} className='relative px-3'><i className="ri-shopping-bag-4-line"></i>
@@ -100,9 +100,9 @@ const Header = () => {
                 <div className='mobile  md:hidden'>
                     <div className='btns-ctas space-x-4'>
                         {User.token ? (
-                            <Link onClick={handleClose} to={'/Profile'}>Profile</Link>
+                            <Link  className='text-lg' onClick={handleClose} to={'/Profile'}>Profile</Link>
                         ) : (
-                            <Link onClick={handleClose} to={'/sign-in'}>Sign In</Link>
+                            <Link  className='text-lg' onClick={handleClose} to={'/sign-in'}>Sign In</Link>
                         )}
                         <Link to={'/Shopping-Cart'} className='relative px-3'><i className="ri-shopping-bag-4-line"></i>
 

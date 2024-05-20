@@ -7,7 +7,7 @@ const CheckOut = () => {
     const items = sessionStorage.getItem('checkOut') || []
     useEffect(() => {
         const itemss = JSON.parse(sessionStorage.getItem('checkOut')) || [];
-        if (itemss.length === 0) {
+        if (!itemss) {
             window.location.href = "/Shop";
         }
     }, []);

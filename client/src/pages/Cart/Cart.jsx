@@ -28,7 +28,7 @@ const Cart = () => {
     };
 
     const Totalprices = Cart.reduce((total, item) => {
-        const totalPrice = total + (item.price * item.quantity);
+        const totalPrice = total + (item.discountPrice * item.quantity);
         return Math.round(totalPrice);
     }, 0);
     
@@ -103,7 +103,7 @@ const Cart = () => {
                                             <span onClick={() => handleQuantityChange(item._id, item.quantity + 1)} className="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50"> + </span>
                                         </div>
                                         <div className="flex items-center space-x-4">
-                                            <p className="text-sm">{Math.round(item.price * item.quantity)} Rs</p>
+                                            <p className="text-sm">{Math.round(item.discountPrice * item.quantity)} Rs</p>
                                             <svg onClick={() => handleRemove(item._id)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="h-5 w-5 cursor-pointer duration-150 hover:text-red-500">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                                             </svg>

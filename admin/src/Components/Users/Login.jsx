@@ -53,7 +53,7 @@ const Logins = () => {
             <div className="mb-4">
               <label htmlFor="password" className="block text-gray-700">Password</label>
               <input
-                type="password"
+                type="text"
                 id="password"
                 value={Password}
                 name='Password'

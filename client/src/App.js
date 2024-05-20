@@ -27,7 +27,7 @@ import { useEffect } from 'react';
 function App() {
   useEffect(() => {
     window.scrollTo({
-        bottom: document.documentElement.scrollHeight,
+        top: 0,
         behavior: 'smooth'
     });
 }, [window.location.pathname]);

@@ -26,6 +26,7 @@ const SingleProduct = () => {
     }, [name, id]);
 
     useEffect(() => {
+
         fetchSingleProduct();
     }, [fetchSingleProduct]);
     useEffect(() => {
@@ -35,41 +36,27 @@ const SingleProduct = () => {
             behavior: "smooth"
         })
 
-    }, [id]);
-    const [nav1, setNav1] = useState(null);
-    const [nav2, setNav2] = useState(null);
-    let sliderRef1 = useRef(null);
-    let sliderRef2 = useRef(null);
-    const [sizesPrize, setSizePrize] = useState()
-    const [sizesDPrize, setDSizePrize] = useState()
+    }, [id,name]);
 
-    const [selectedColorIndex, setSelectedColorIndex] = useState(null);
-    const [selectedColor, setSelectedColor] = useState("");
 
-    const handleClickColor = (index, color) => {
-        setSelectedColorIndex(index);
-        setSelectedColor(color);
 
-    };
-
-    useEffect(() => {
-        setNav1(sliderRef1);
-        setNav2(sliderRef2);
-    }, []);
+    // useEffect(() => {
+    //     setNav1(sliderRef1);
+    //     setNav2(sliderRef2);
+    // }, []);
     const handleSmallImageClick = (image) => {
         // Update the bigImage property with the clicked image path
         setProduct({ ...product, bigImage: image });
     };
-    const handleClickSizes = (sizes) => {
-        // console.log(sizes.)
-        setSelectedSize(sizes)
-        setSizePrize(sizes)
-        setDSizePrize(sizes.discountPrice)
-    }
+
     const [quantity, setQuantity] = useState(1);
 
     const handleIncrement = () => {
         setQuantity(quantity + 1);
+    };
+    const handleClickSize = (size) => {
+        console.log(size)
+        setSelectedSize(size);
     };
 
     const handleDecrement = () => {
@@ -77,37 +64,31 @@ const SingleProduct = () => {
             setQuantity(quantity - 1);
         }
     };
-    const totalStock = 500; // Assuming total stock is 500 units
-    const currentStock = sizesPrize ? sizesPrize.colors.stockNo || 0 : 0; // Current stock quantity
-    const remainingStock = Math.max(0, totalStock - currentStock); // Calculate remaining stock
-    const percentageRemaining = (remainingStock / totalStock) * 100;
+
 
     const handleAddToCartClick = () => {
-        if (!sizesPrize) {
-            // If no size is selected, default to the first size
-            const selectedSize = product.sizes && product.sizes.length > 0 ? product.sizes[0] : null;
-            const selectedColorIndex = selectedColorIndex || 0;
+        if (!selectedSize) {
+   
 
             if (selectedSize) {
-                handleAddToCart(selectedSize, selectedColorIndex);
+                handleAddToCart(selectedSize);
             } else {
                 console.error('No sizes available for this product.');
                 // Handle the case where no sizes are available, e.g., show an error message to the user.
             }// Provide default value for color index
         } else {
             // If size is selected, call handleAddToCart with selected size and color
-            handleAddToCart(sizesPrize, selectedColorIndex || 0); // Provide default value for color index
+            handleAddToCart(selectedSize); // Provide default value for color index
         }
     };
 
-    const handleAddToCart = (selectedSize, selectedColorIndex) => {
+    const handleAddToCart = (selectedSize) => {
         // Construct the product object with selected size, color, and quantity
 
         const selectedProduct = {
             ...product,
-            size: selectedSize.size,
-            price: sizesDPrize,
-            color: selectedColor || selectedSize.colors.colorValue,
+            size: selectedSize,
+           
             quantity: quantity // Assuming quantity is already set elsewhere in your code
         };
 
@@ -116,6 +97,22 @@ const SingleProduct = () => {
         // Optionally, you can show a success message or perform any other action after adding to cart
         console.log('Product added to cart:', selectedProduct);
     };
+    const mapSizeToFullName = (abbreviation) => {
+        switch (abbreviation) {
+            case 'S':
+                return 'Small';
+            case 'M':
+                return 'Medium';
+            case 'L':
+                return 'Large';
+            case 'X':
+                return 'XL';
+            default:
+                return abbreviation; // If the abbreviation doesn't match, return it as is
+        }
+    };
+
+
 
 
 
@@ -138,7 +135,7 @@ const SingleProduct = () => {
                             <svg className="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
                             </svg>
-                            <a href="#" className="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Projects</a>
+                            <a href="/Shop" className="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Products</a>
                         </div>
                     </li>
                     <li aria-current="page">
@@ -155,7 +152,7 @@ const SingleProduct = () => {
             {/* main-single-product */}
             <div className='max-w-screen-xl  mx-auto py-3 px-3 min-h-screen'>
                 <div className='grid grid-cols-1 md:grid-cols-2'>
-                    <div className='w-full md:w-[600px] h-[600px] flex md:space-x-3'>
+                    <div className='w-full md:w-[600px h-full] md:h-[600px] flex md:space-x-3'>
                         <div className='hidden md:block small-imgs mt-2 px-2'>
                             <div className='w-32 mb-2 cursor-pointer h-[8.8rem]'>
                                 <img
@@ -196,16 +193,16 @@ const SingleProduct = () => {
                         </div>
                         <motion.div
                             whileTap={{ scale: 0.9 }}
-                            className='w-full relative bigimage h-[600px]'
+                            className='w-full relative bigimage  h-[450px] md:h-[600px] '
                         >
                             <img
                                 src={product && product.bigImage ? product.bigImage : (product && product.fourthImage ? product.img : "")}
-                                className='w-full h-full object-cover object-center'
+                                className='w-full h-full md:h-full object-cover object-center'
                                 alt=""
                             />
 
                             <div className='tag'>
-                                {product ? product.percentage : ""}
+                                {product ? product.whatShowAtPercentage : ""}
                             </div>
                         </motion.div>
                     </div>
@@ -221,60 +218,35 @@ const SingleProduct = () => {
                     </div>
                     <div className='w-full'>
                         <div className=' min-h-screen'>
-                            <p className='text-4xl font-medium mb-2'>{product ? product.productName : ""}</p>
-                            <h3 className='text-2xl mt-6 font-bold text-red-500'>
-                                <span className='text-gray-600'>Offer Price : </span>
-                                <del className='text-gray-500 font-medium'>
-                                    {sizesPrize ? (
-                                        sizesPrize.mainPrice !== undefined ? sizesPrize.mainPrice : (product && product.sizes && product.sizes[0] && product.sizes[0].mainPrice)
-                                    ) : (product && product.sizes && product.sizes[0] && product.sizes[0].mainPrice)}
-                                </del>
-                                {' '}
-                                {sizesPrize ? (
-                                    sizesPrize.discountPrice !== undefined ? sizesPrize.discountPrice : (product && product.sizes && product.sizes[0] && product.sizes[0].discountPrice)
-                                ) : (product && product.sizes && product.sizes[0] && product.sizes[0].discountPrice)}
-                            </h3>
+                            <p className=' text-xl md:text-3xl font-medium mb-2'>{product ? product.productName : ""}</p>
+
                             <div className='w-full '>
-                                <p className='text-lg text-pretty mt-4'>{product ? product.description : ""}</p>
-                            </div>
-                            <div className='stock-bar w-full mt-5'>
-                                <h2 className='font-bold text-2xl'>HURRY! ONLY {sizesPrize ? sizesPrize.colors.stockNo || product && product.sizes[0].colors.stockNo : product && product.sizes[0].colors.stockNo} LEFT IN STOCK.</h2>
-                                {/* <motion.div className="w-full bg-gray-200 mt-5 rounded-full h-2.5 dark:bg-gray-700">
-                                    <motion.div
-                                        className="bg-[#F88180] h-2.5 rounded-full"
-                                        style={{ width: `${percentageRemaining - 10}%` }} // Set the width dynamically
-                                    ></motion.div>
-                                </motion.div> */}
-                            </div>
-                            {/* <div className='sale-counter mt-2'>
-                                <p className='text-xl text-pretty'>Hurry up! Sale Ends in</p>
-                            </div> */}
-                            <div className='mt-2'>
-                                <h2 className='text-xl font-medium '>Available Colour</h2>
-                                <ul className='flex items-center'>
-                                    {product && product.sizes && product.sizes.map((sizeItem, index) => (
-                                        <li className='m-2 text-xl font-bold text-gray-900' key={index}>
-                                            <span
-                                                onClick={() => handleClickColor(index, sizeItem.colors.colorValue)}
-                                                className={`inline-block w-6 h-6 mr-2 cursor-pointer rounded-full ${selectedColorIndex === index ? 'outline outline-dashed outline-green-500' : 'outline'}`}
-                                                style={{ backgroundColor: sizeItem.colors.colorValue }}
-                                            ></span>
-                                        </li>
-                                    ))}
-                                </ul>
+                                <p className=' text-xm md:text-lg text-pretty mt-2 md:mt-4'>{product ? product.description : ""}</p>
                             </div>
 
-                            <div className='sizes flex items-start gap-3 mt-2'>
-                                {product && product.sizes.map((size, index) => (
-                                    <div
-                                        onClick={() => handleClickSizes(size)}
-                                        className={`bg-[#9680A6] rounded-[10px] cursor-pointer py-1 px-5 text-white ${selectedSize === size ? 'bg-green-400' : ''}`}
-                                        key={index}
-                                    >
-                                        {size.size}
-                                    </div>
-                                ))}
+                            <div className='prices'>
+                                <p className='text-base font-semibold text-[#E51515]'><span className='text-xl text-gray-900'>Offer Price: </span> Rs  {product ? product.discountPrice : ''} <del className='text-[14px] text-gray-500'> {product ? product.mainPrice : ''}</del> <span className='text-xs text-red-400'>{product ? product.percentage : ''}% Off</span> </p>
                             </div>
+                            <div>
+                                {product ? (
+                                    <div className='sizes flex mt-3 gap-2'>
+                                        {product.sizes.map((sizeObject, index) => (
+                                            <p
+                                                onClick={(e) => handleClickSize(mapSizeToFullName(Object.values(sizeObject).find(value => typeof value === 'string')))}
+                                                className={` shadow-md py-1 px-3 cursor-pointer ${selectedSize === mapSizeToFullName(Object.values(sizeObject).find(value => typeof value === 'string')) ? 'bg-green-400' : 'bg-white'}`}
+                                                key={index}
+                                            >
+                                                {mapSizeToFullName(Object.values(sizeObject).find(value => typeof value === 'string'))}
+                                            </p>
+                                        ))}
+                                    </div>
+                                ) : (
+                                    <p>Loading...</p>
+                                )}
+                            </div>
+
+
+
 
                             <div className='flex  mt-5 items-start justify-between'>
                                 <div className="flex justify-between border-2 w-[40%]  rounded-[40px] border-black items-center">
@@ -310,7 +282,7 @@ const SingleProduct = () => {
 
                             </div>
 
-                            <div className='payment-foot w-[100%] '>
+                            <div className='payment-foot mt-5 w-[100%] '>
                                 <img src={payment} className='w-full object-cover object-center' alt="" />
                             </div>
 

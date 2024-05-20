@@ -1,44 +1,30 @@
 const mongoose = require('mongoose');
 const productSchema = new mongoose.Schema({
     img: {
-        type: String    },
+        type: String
+    },
     productName: {
         type: String,
         required: true
     },
-    sizes: [{
-        size: {
-            type: String,
-            required: true
-        },
-        discountPrice: {
-            type: String,
-            required: true
-        },
-        mainPrice: {
-            type: String,
-        },
-        colors: {
-            colorValue: {
-                type: String
-            },
-            stockNo: {
-                type: String
-            }
-        }
-    }],
+    whatShowAtPercentage:{
+        type:String
+    },
+     sizes: {
+        type:[String]
+     },
     secondImg: {
         type: String
-       
+
     },
-    
+
     thirdImage: {
         type: String
-       
+
     },
     fourthImage: {
         type: String
-       
+
     },
     discountPrice: {
         type: String,
@@ -66,20 +52,20 @@ const productSchema = new mongoose.Schema({
     },
     availability: {
         type: Boolean,
-       default:true
+        default: true
     },
     // categories: {
     //     type: String,
     //     required: true
     // },
-    categories : {
+    categories: {
         type: String,
     },
-    tags:{
+    tags: {
         type: String
     },
-    subCategory : {
-        type : String
+    subCategory: {
+        type: String
     }
 }, { timeStamps: true });
 
