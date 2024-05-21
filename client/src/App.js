@@ -22,6 +22,7 @@ import Kids from './components/Collections/New Arrival/Kids';
 import ProductPage from './components/ProductPage/ProductPage';
 import DyanamicCollections from './components/Collections/DynamicCollections/DyanamicCollections'
 import { useEffect } from 'react';
+import Privacy from './pages/Terms/Privacy';
 // import ProductPage from './components/ProductPage/ProductPage';
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
         <Route path='/Product-page/:drop' element={<ProductPage />} />
         <Route path='/Collection/:Collection' element={<DyanamicCollections />} />
 
+        <Route path="/Privacy" element={<Privacy />} />
 
 
 

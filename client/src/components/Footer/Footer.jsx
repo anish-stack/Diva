@@ -93,9 +93,9 @@ const Footer = () => {
                             <li className="mb-4">
                                 <a href="/Shipping-Policy" className="hover:underline">Shipping-Policy</a>
                             </li>
-                            {/* <li className="mb-4">
-                    <a href="#" className="hover:underline">Terms &amp; Conditions</a>
-                </li> */}
+                            <li className="mb-4">
+                    <a href="/Privacy" className="hover:underline">Privacy &amp; Policy</a>
+                </li>
                         </ul>
                     </div>
 
