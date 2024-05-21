@@ -15,7 +15,7 @@ const Orders = () => {
       try {
         const response = await axios.get('https://sbackend-oedj.onrender.com/api/admin-orders');
         setAdminOrders(response.data.data);
-        console.log(response.data)
+        //console.log(response.data)
         setFilteredOrders(response.data.data);
       } catch (error) {
         console.error('Error fetching data:', error);

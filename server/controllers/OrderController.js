@@ -6,13 +6,13 @@ const axios = require('axios');
 const { search } = require('../routes/routes');
 async function doPayment(amount, Merchant, transactionId, res, req) {
     try {
-        console.log("i am hiut")
+        //console.log("i am hiut")
 
         const user = await req.user;
-        console.log("i am hiut")
+        //console.log("i am hiut")
 
-        console.log(amount, Merchant, transactionId)
-        // console.log(user) // Assuming req.user is a Promise resolving to user data
+        //console.log(amount, Merchant, transactionId)
+        // //console.log(user) // Assuming req.user is a Promise resolving to user data
         const data = {
             merchantId: merchantId,
             merchantTransactionId: transactionId,
@@ -48,17 +48,17 @@ async function doPayment(amount, Merchant, transactionId, res, req) {
 
 
         const response = await axios.request(options);
-        console.log(response.data);
+        //console.log(response.data);
         return response.data;
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         // Handle error
     }
 }
 
 exports.CreateOrder = async (req, res) => {
     try {
-        console.log("i am hiut")
+        //console.log("i am hiut")
         const { items, finalPrice, UserInfo, PaymentMode, UserDeliveryAddress } = req.body;
 
         if (!finalPrice || !UserInfo || !PaymentMode || !UserDeliveryAddress) {
@@ -71,7 +71,7 @@ exports.CreateOrder = async (req, res) => {
         let payData;
 
         if (PaymentMode === "Online") {
-            console.log("I Ma Hit")
+            //console.log("I Ma Hit")
             const { amount, transactionId, Merchant } = generateOnlinePaymentDetails(finalPrice);
             payData = await doPayment(amount, Merchant, transactionId, res, req);
         }
@@ -93,7 +93,7 @@ exports.CreateOrder = async (req, res) => {
             payData: payData || "COD - ORDER"
         });
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         res.status(500).json({
             success: false,
             msg: "Internal Server Error"
@@ -179,7 +179,7 @@ exports.checkStatus = async (req, res) => {
                     },
                     { new: true }
                 );
-                console.log(LatestOrder)
+                //console.log(LatestOrder)
                 if (!LatestOrder) {
                     return res.status(404).json({ success: false, message: "No order found within the specified timestamp range" });
                 }
@@ -213,7 +213,7 @@ exports.GetMyOrders = async (req, res) => {
             data: foundOrders
         });
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         res.status(500).json({
             success: false,
             msg: "Internal Server Error"
@@ -223,7 +223,7 @@ exports.GetMyOrders = async (req, res) => {
 exports.getAllOrder = async (req, res) => {
     try {
         const AdminOrders = await Orders.find()
-        // console.log(AdminOrders)
+        // //console.log(AdminOrders)
         if (AdminOrders.length === 0) {
             return res.status(400).json({
                 success: false,
@@ -237,7 +237,7 @@ exports.getAllOrder = async (req, res) => {
         })
 
     } catch (error) {
-        console.log(error)
+        //console.log(error)
     }
 }
 exports.getSingleOrder = async (req, res) => {
@@ -262,6 +262,6 @@ exports.getSingleOrder = async (req, res) => {
             msg: "Order is  Found"
         })
     } catch (error) {
-        console.log(error)
+        //console.log(error)
     }
 }

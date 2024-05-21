@@ -25,11 +25,11 @@ useEffect(()=>{
     try {
       const res = await axios.put(`https://api.thedivastory.com/api/Banner/active/${id}`);
       alert('Banner Activated Successfully');
-      console.log(res.data);
+      // //console.log(res.data);
       // Refresh banners after activation
       fetchData();
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 
@@ -37,11 +37,11 @@ useEffect(()=>{
     try {
       const res = await axios.put(`https://api.thedivastory.com/api/Banner/inactive/${id}`);
       alert('Banner Deactivated Successfully');
-      console.log(res.data);
+      //console.log(res.data);
       // Refresh banners after deactivation
       fetchData();
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 
@@ -49,11 +49,11 @@ useEffect(()=>{
     try {
       const res = await axios.delete(`https://api.thedivastory.com/api/delete-Banners/${id}`);
       alert('Banner Deleted Successfully');
-      console.log(res.data);
+      //console.log(res.data);
       // Refresh banners after deletion
       fetchData();
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 

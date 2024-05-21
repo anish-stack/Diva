@@ -19,7 +19,7 @@ exports.createProducts = async (req, res) => {
 
         // Parse the sizes from the request body
         const sizes = JSON.parse(req.body.sizes);
-        console.log(sizes);
+        //console.log(sizes);
 
         if (!files || files.length === 0) {
             return res.status(400).json({
@@ -96,14 +96,14 @@ exports.createProducts = async (req, res) => {
 
         // Save the new product to the database
         await newProduct.save();
-        console.log(`New`, newProduct);
+        //console.log(`New`, newProduct);
         res.status(200).json({
             success: true,
             msg: "Product created successfully",
             data: newProduct
         });
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         res.status(500).json({
             success: false,
             error: "Internal server error"
@@ -120,7 +120,7 @@ exports.getAllProducts = async (req, res) => {
             data: products
         });
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         res.status(500).json({
             success: false,
             error: "Internal server error"
@@ -144,7 +144,7 @@ exports.deleteProductById = async (req, res) => {
             data: deletedProduct
         });
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         res.status(500).json({
             success: false,
             error: "Internal server error"
@@ -156,7 +156,7 @@ exports.deleteProductById = async (req, res) => {
 exports.getProductByName = async (req, res) => {
     try {
         const { productName, id } = req.params;
-        console.log(id)
+        //console.log(id)
         let product;
         if (id) {
             // If ID is provided, search by ID
@@ -184,7 +184,7 @@ exports.getProductByName = async (req, res) => {
             data: product
         });
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         res.status(500).json({
             success: false,
             error: "Internal server error"
@@ -202,7 +202,7 @@ exports.filterProductsByTags = async (req, res) => {
             data: filteredProducts
         });
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         res.status(500).json({
             success: false,
             error: "Internal server error"
@@ -215,7 +215,7 @@ exports.filterProductsByTags = async (req, res) => {
     try {
         const { id } = req.params;
         const updateFields = {};
-        console.log("Incoming Message", req.body);
+        //console.log("Incoming Message", req.body);
 
         // Destructure the incoming request body
         const {
@@ -247,7 +247,7 @@ exports.filterProductsByTags = async (req, res) => {
 
         // Update the product in the database
         const updatedProduct = await Product.findByIdAndUpdate(id, { $set: updateFields }, { new: true });
-        console.log('Updated Product', updatedProduct);
+        //console.log('Updated Product', updatedProduct);
 
         if (!updatedProduct) {
             return res.status(404).json({

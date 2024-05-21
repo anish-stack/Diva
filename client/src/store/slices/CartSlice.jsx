@@ -25,7 +25,7 @@ export const cartSlice = createSlice({
         },
         removeItem: (state, action) => {
             const itemIdToRemove = action.payload;
-            console.log(itemIdToRemove)
+            //console.log(itemIdToRemove)
             state.items = state.items.filter(item => item._id !== itemIdToRemove);
             toast.success("Item Removed")
 

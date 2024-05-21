@@ -19,8 +19,8 @@ const Women = () => {
 
     const handleShowQuickView = (item, index) => {
         setShowQucikView(true)
-        console.log("Item", item)
-        console.log("index", index)
+        //console.log("Item", item)
+        //console.log("index", index)
         setItems(item)
 
     }

@@ -15,7 +15,7 @@ const Logins = () => {
         email: Email,
         password :Password
       });
-      console.log(response.data)
+      //console.log(response.data)
 
         const Auth = response.data.token
         sessionStorage.setItem('token',Auth)

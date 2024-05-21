@@ -15,7 +15,7 @@ const Allproducts = () => {
           "https://api.thedivastory.com/api/get-products"
         );
         setProducts(response.data.data.reverse());
-        console.log(response.data.data);
+        //console.log(response.data.data);
 
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -28,11 +28,11 @@ const Allproducts = () => {
   const handleDelete = async (id) => {
     try {
       const res = await axios.delete(`https://api.thedivastory.com/api/delete-products/${id}`)
-      console.log(res.data)
+      //console.log(res.data)
       setProducts(products.filter(products => products._id !== id));
       toast.success('Product Deleted')
     } catch (error) {
-      console.log(error)
+      //console.log(error)
       toast.error('Internal Error')
     }
   }

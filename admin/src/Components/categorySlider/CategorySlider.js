@@ -19,11 +19,11 @@ const CategorySlider = () => {
         try {
 
             const response = await axios.get("https://api.thedivastory.com/api/getAllCategorey")
-            console.log(response.data);
+            //console.log(response.data);
             setCateg(response.data)
             
         } catch (error) {
-            console.log(error);
+            //console.log(error);
         }
     }
 

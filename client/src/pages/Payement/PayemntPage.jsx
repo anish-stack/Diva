@@ -8,13 +8,13 @@ const PaymentPage = () => {
     const [paymentStatus, setPaymentStatus] = useState(null);
     const {txn} = useParams()
     if(!txn){
-        console.log("I am Not")
+        //console.log("I am Not")
     }else(
         console.log("I am Yes")
     )
     const handleClear = () => {
         if (!txn) {
-            console.log("I am Not");
+            //console.log("I am Not");
         } else {
             sessionStorage.removeItem('checkOut');
             sessionStorage.removeItem('cart');

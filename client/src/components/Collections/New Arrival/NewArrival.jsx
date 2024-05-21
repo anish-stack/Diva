@@ -16,7 +16,7 @@ const NewArrival = () => {
         // Dispatch the fetchData thunk when the component mounts
         dispatch(fetchData());
     }, [dispatch]);
-    // console.log(data)
+    // //console.log(data)
     const handleShowQuickView = (item, index) => {
         setShowQucikView(true)
     
@@ -50,7 +50,7 @@ const NewArrival = () => {
                                 <div className='buttons'>
                                     <ul>
                                         <li onClick={() => handleShowQuickView(item, index)}><i className="ri-eye-fill"></i></li>
-                                        <li><i className="ri-shopping-bag-4-line"></i></li>
+                                        <li><Link to={`/single-product/${item._id}/${item.productName}`}><i className="ri-shopping-bag-4-line"></i></Link></li>
                                         <li><i className="ri-heart-fill"></i></li>
 
                                     </ul>

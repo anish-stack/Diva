@@ -16,7 +16,7 @@ const CreateVoucher = ({ onCreate }) => {
     e.preventDefault();
     try {
       const response = await axios.post('https://api.thedivastory.com/api/create-vouchers', formData);  // Adjust the endpoint as needed
-      console.log(response.data.data);
+      //console.log(response.data.data);
       toast.success('Coupon Code Generated Successfully');
       //   setFormData({ CouponeCode: '', HowMuchPercentageof: '', Active: true });
     } catch (error) {

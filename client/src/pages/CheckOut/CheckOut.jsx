@@ -81,7 +81,7 @@ const CheckOut = () => {
                 }
             });
 
-            console.log("response", response.data);
+            //console.log("response", response.data);
 
             sessionStorage.removeItem('checkOut');
             sessionStorage.removeItem('cart');
@@ -94,7 +94,7 @@ const CheckOut = () => {
                 window.location.href = redirectUrl;
             }
         } catch (error) {
-            console.log("error", error);
+            //console.log("error", error);
             const redirectUrl = '/Payment-Status/server-error-payment?success=false';
             window.location.href = redirectUrl;
         }

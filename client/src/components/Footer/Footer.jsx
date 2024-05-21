@@ -7,10 +7,10 @@ const Footer = () => {
     const handleFetchMainCategorey = async () => {
         try {
             const res = await axios.get('https://api.thedivastory.com/api/get-all-main-category')
-            console.log(res.data.data)
+            //console.log(res.data.data)
             setItems(res.data.data)
         } catch (error) {
-            console.log(`error`)
+            //console.log(`error`)
         }
     }
     useEffect(() => {

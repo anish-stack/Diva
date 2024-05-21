@@ -15,7 +15,7 @@ const AllCategoreybanner = () => {
     const fetchDataDelete = async (id) => {
         try {
             const response = await axios.delete(`https://api.thedivastory.com/api/delete-redirect/${id}`);
-            console.log(response.data)
+            //console.log(response.data)
             fetchData()
         } catch (error) {
             console.error('Error fetching data:', error);

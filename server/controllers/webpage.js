@@ -23,7 +23,7 @@ exports.createBanner = async (req, res) => {
 
         // Uploading the banner image to Cloudinary
         const forBannerImage = await cloudinary.uploader.upload(tempFilePath);
-        console.log(forBannerImage);
+        //console.log(forBannerImage);
 
         // Creating the banner object
         const newBanner = new banner({
@@ -45,7 +45,7 @@ exports.createBanner = async (req, res) => {
             data: newBanner
         });
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         return res.status(500).json({
             success: false,
             msg: "Internal Server Error"
@@ -60,7 +60,7 @@ exports.getAllBanners = async (req, res) => {
             data: banners
         });
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         return res.status(500).json({
             success: false,
             msg: "Internal Server Error"
@@ -86,7 +86,7 @@ exports.updateBanner = async (req, res) => {
             data: updatedBanner
         });
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         return res.status(500).json({
             success: false,
             msg: "Internal Server Error"
@@ -112,7 +112,7 @@ exports.deleteBanner = async (req, res) => {
             msg: "Banner deleted successfully"
         });
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         return res.status(500).json({
             success: false,
             msg: "Internal Server Error"
@@ -123,7 +123,7 @@ exports.deleteBanner = async (req, res) => {
 exports.createCategory = async (req, res) => {
     try {
         const { MainCategory,title } = req.body;
-        console.log(req.body)
+        //console.log(req.body)
         if (!title) { // Checking if active is defined
             return res.status(400).json({
                 success: false,
@@ -139,7 +139,7 @@ exports.createCategory = async (req, res) => {
 
         // Uploading the banner image to Cloudinary
         const forBannerImage = await cloudinary.uploader.upload(tempFilePath);
-        console.log(forBannerImage);
+        //console.log(forBannerImage);
 
         // Creating the banner object
         const newCategory = new Category({
@@ -161,7 +161,7 @@ exports.createCategory = async (req, res) => {
             data: newCategory
         });
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         return res.status(500).json({
             success: false,
             msg: "Internal Server Error"
@@ -177,7 +177,7 @@ exports.getAllCategories = async (req, res) => {
             data: categories
         });
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         return res.status(500).json({
             success: false,
             msg: "Internal Server Error"
@@ -192,7 +192,7 @@ exports.getOnlyMainCategory = async (req, res) => {
             data: categories
         });
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         return res.status(500).json({
             success: false,
             msg: "Internal Server Error"
@@ -217,7 +217,7 @@ exports.getTitleByMainCategory = async (req, res) => {
             data: categories.map(category => category.title)
         });
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         return res.status(500).json({
             success: false,
             msg: "Internal Server Error"
@@ -246,7 +246,7 @@ exports.updateCategory = async (req, res) => {
             data: updatedCategory
         });
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         return res.status(500).json({
             success: false,
             msg: "Internal Server Error"
@@ -271,7 +271,7 @@ exports.deleteCategory = async (req, res) => {
             msg: "Category deleted successfully"
         });
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         return res.status(500).json({
             success: false,
             msg: "Internal Server Error"
@@ -289,7 +289,7 @@ exports.getAllTags = async (req, res) => {
             data: tagss
         });
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         return res.status(500).json({
             success: false,
             msg: "Internal Server Error"
@@ -321,7 +321,7 @@ exports.makeTag = async (req, res) => {
             data: newTag
         });
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         return res.status(500).json({
             success: false,
             msg: "Internal Server Error"
@@ -348,7 +348,7 @@ exports.updateTag = async (req, res) => {
             data: updatedTag
         });
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         return res.status(500).json({
             success: false,
             msg: "Internal Server Error"
@@ -374,7 +374,7 @@ exports.deleteTag = async (req, res) => {
             msg: "Tag deleted successfully"
         });
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         return res.status(500).json({
             success: false,
             msg: "Internal Server Error"

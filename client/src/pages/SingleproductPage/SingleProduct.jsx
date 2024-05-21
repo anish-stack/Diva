@@ -18,10 +18,10 @@ const SingleProduct = () => {
     const fetchSingleProduct = useCallback(async () => {
         try {
             const response = await axios.get(`https://api.thedivastory.com/api/get-products-name/${name}/${id}`);
-            console.log(response.data);
+            //console.log(response.data);
             setProduct(response.data.data); // Assuming response.data is the product object
         } catch (error) {
-            console.log(error);
+            //console.log(error);
         }
     }, [name, id]);
 
@@ -59,7 +59,7 @@ const SingleProduct = () => {
         setQuantity(quantity + 1);
     };
     const handleClickSize = (size) => {
-        console.log(size)
+        //console.log(size)
         setSelectedSize(size);
     };
 
@@ -99,7 +99,7 @@ const SingleProduct = () => {
         // Dispatch addItem action with the selected product to add to cart
         dispatch(addItem(selectedProduct));
         // Optionally, you can show a success message or perform any other action after adding to cart
-        console.log('Product added to cart:', selectedProduct);
+        //console.log('Product added to cart:', selectedProduct);
     };
     const mapSizeToFullName = (abbreviation) => {
         switch (abbreviation) {
@@ -124,7 +124,7 @@ const SingleProduct = () => {
         <div className='w-full mt-5'>
 
             {/* Bread Crumbs */}
-            <nav className="flex bg-gray-200 py-4" aria-label="Breadcrumb">
+            <nav className=" hidden md:flex bg-gray-200 py-4" aria-label="Breadcrumb">
                 <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
                     <li className="inline-flex items-center">
                         <a href="#" className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
@@ -154,7 +154,7 @@ const SingleProduct = () => {
             </nav>
 
             {/* main-single-product */}
-            <div className='max-w-screen-xl  mx-auto py-3 px-3 min-h-screen'>
+            <div className='max-w-screen-xl  mx-auto py-3 px-3 h-full md:min-h-screen'>
                 <div className='grid grid-cols-1 gap-3 md:grid-cols-2'>
                     <div className='w-full md:w-[600px  h-full] md:h-[600px] gap-3 flex md:space-x-3'>
                         <div className='hidden md:block small-imgs mt-2 px-2'>
@@ -221,7 +221,7 @@ const SingleProduct = () => {
                             src={product ? product.fourthImage : ""} className='w-full mb-2 h-full object-cover' alt="" /></div>
                     </div>
                     <div className='w-full'>
-                        <div className=' min-h-screen'>
+                        <div className=' h-full md:min-h-screen'>
                             <p className=' text-xl md:text-3xl font-medium mb-2'>{product ? product.productName : ""}</p>
 
                             <div className='w-full '>

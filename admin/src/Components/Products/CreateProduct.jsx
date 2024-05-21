@@ -87,7 +87,7 @@ const CreateProduct = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoad(true);
-    console.log("Before Json",formdata.sizes)
+    //console.log("Before Json",formdata.sizes)
     const sizesJSON = JSON.stringify(formdata.sizes);
     // Create a new FormData object
     const formData = new FormData();
@@ -105,7 +105,7 @@ const CreateProduct = () => {
         formData.append('images', file);
       });
     }
-    // console.log(formdata)
+    // //console.log(formdata)
     try {
       // Make Axios request
       const response = await axios.post('https://api.thedivastory.com/api/create-products', formData, {
@@ -113,7 +113,7 @@ const CreateProduct = () => {
           'Content-Type': 'multipart/form-data'
         }
       });
-      console.log(response.data); // Assuming you want to log the response
+      //console.log(response.data); // Assuming you want to log the response
       toast.success('Product Added Successfully');
       setLoad(false);
     } catch (error) {
@@ -145,7 +145,7 @@ const CreateProduct = () => {
     const fetchDataCat = async () => {
       try {
         const response = await axios.get('https://api.thedivastory.com/api/get-all-main-category');
-        console.log(response.data.data);
+        //console.log(response.data.data);
         setCategories(response.data.data);
         setIsLoading(false);
       } catch (error) {

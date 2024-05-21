@@ -16,25 +16,25 @@ const Header = () => {
         setShowMenu(false)
     }
     const cartItems = useSelector(state => state.cart);
-    console.log(cartItems.items.length);
+    //console.log(cartItems.items.length);
     const User = useSelector(state => state.register)
 
     const handleFetchMainCategorey = async () => {
         try {
             const res = await axios.get('https://api.thedivastory.com/api/get-all-main-category')
-            console.log(res.data.data)
+            //console.log(res.data.data)
             setItem(res.data.data)
         } catch (error) {
-            console.log(`error`)
+            //console.log(`error`)
         }
     }
     const handleFetchSubCategory = async (item) => {
         try {
             const res = await axios.get(`https://api.thedivastory.com/api/get-title/${item}`)
-            console.log(res.data.data)
+            //console.log(res.data.data)
             setDropdown(res.data.data)
         } catch (error) {
-            console.log(`${error}`)
+            //console.log(`${error}`)
         }
     }
     const handleRemoveSubCategory = () => {
@@ -47,7 +47,7 @@ const Header = () => {
     }, [])
     return (
         <header className='bg-banner'>
-            <div className="top-header">
+            <div className="top-header hidden md:block">
 
                 <div className="front whitespace-nowrap">
                     <span>SIGN UP AND GET 10% OFF YOUR FIRST ORDER</span>

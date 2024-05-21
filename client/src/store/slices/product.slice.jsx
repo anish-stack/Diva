@@ -8,7 +8,7 @@ export const fetchData = createAsyncThunk('product/fetchData', async () => {
         return response.data.data; // Return the fetched data
     } catch (error) {
         // Handle errors if any
-        console.log(error)
+        //console.log(error)
         throw Error('Error fetching data');
     }
 });

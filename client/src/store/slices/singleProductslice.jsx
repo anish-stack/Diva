@@ -4,12 +4,12 @@ import axios from 'axios';
 // Define an async thunk to fetch data
 export const fetchSingleData = createAsyncThunk('Single-product/fetchData', async (productName,id) => {
     try {
-        console.log(id)
+        //console.log(id)
         const response = await axios.get(`www.api.naturalcottoncollection.com/api/get-products-name/${productName}/${id}`);
         return response.data.data; // Return the fetched data
     } catch (error) {
         // Handle errors if any
-        console.log(error)
+        //console.log(error)
         throw Error('Error fetching data');
     }
 });

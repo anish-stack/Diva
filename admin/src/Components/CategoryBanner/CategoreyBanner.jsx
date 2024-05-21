@@ -33,10 +33,10 @@ const CreateCategoryFormBanner = () => {
     const fetchCat = async () => {
         try {
             const response = await axios.get('https://api.thedivastory.com/api/get-category')
-            console.log(response.data.data)
+            //console.log(response.data.data)
             setCat(response.data.data)
         } catch (error) {
-            console.log(error)
+            //console.log(error)
         }
     }
     useEffect(() => {
@@ -45,14 +45,14 @@ const CreateCategoryFormBanner = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // console.log(formData)
+        // //console.log(formData)
         try {
             const formDataToSend = new FormData(); // Create a new FormData object
             formDataToSend.append('title', formData.title); // Append title
             formDataToSend.append('image', formData.file); // Append file
             formDataToSend.append('OneWhichCategoryRedirect', formData.OneWhichCategoryRedirect); // Append file
 
-            console.log(formDataToSend)
+            //console.log(formDataToSend)
             const response = await axios.post(
                 "https://api.thedivastory.com/api/create-redirect",
                 formDataToSend, {
@@ -62,7 +62,7 @@ const CreateCategoryFormBanner = () => {
             }
             );
             toast.success('Category Created')
-            console.log(response.data);
+            //console.log(response.data);
             setMessage("Category created successfully!");
 
         } catch (error) {

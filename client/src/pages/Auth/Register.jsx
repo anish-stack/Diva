@@ -69,7 +69,7 @@ const Register = () => {
 
         try {
             const response = await axios.post('https://api.thedivastory.com/api/register', formData);
-            console.log(response.data);
+            //console.log(response.data);
             toast.success('Registration Successful', {
                 style: {
                     border: '1px solid #00e500',
@@ -82,7 +82,7 @@ const Register = () => {
                 },
             });
 
-            // console.log(formData);
+            // //console.log(formData);
             dispatch(registerSuccess({ user: response.data.user, token: response.data.token }));
             if (cartItems.items.length > 0) {
                 return window.location.href = "/Shopping-Cart"

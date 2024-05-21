@@ -30,7 +30,7 @@ const CreateOfferBanner = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-// console.log(formData)
+// //console.log(formData)
     try {
       const formDataToSend = new FormData(); // Create a new FormData object
       // formDataToSend.append('title', formData.title); // Append title
@@ -39,7 +39,7 @@ const CreateOfferBanner = () => {
       formDataToSend.append('active', formData.active); // Append active
 
       formDataToSend.append('images', formData.file); // Append file
-      console.log(formDataToSend)
+      //console.log(formDataToSend)
       const response = await axios.post(
         "https://api.thedivastory.com/api/create-sales-banners",
         formDataToSend,{
@@ -48,7 +48,7 @@ const CreateOfferBanner = () => {
           }
         }
       );
-      console.log(response.data);
+      //console.log(response.data);
       toast.success('Banner Created')
       setMessage("Banner created successfully!");
     } catch (error) {

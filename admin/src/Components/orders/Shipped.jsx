@@ -22,15 +22,15 @@ const Shipped = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log(formData);
+      //console.log(formData);
       const response = await axios.post(`https://api.thedivastory.com/api/Order-Ship/${id}`, formData, {
         headers: {
           'Content-Type': 'application/json'
         }
       });
-      console.log(response.data);
+      //console.log(response.data);
       if (response.status === 201) {
-        console.log('Order shipped successfully');
+        //console.log('Order shipped successfully');
       }
     } catch (error) {
       console.error('Error occurred:', error);

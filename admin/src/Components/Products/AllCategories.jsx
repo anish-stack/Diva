@@ -28,14 +28,14 @@ const AllCategories = () => {
 
   const handleEditCategory = (categoryId) => {
     // Implement edit category functionality
-    console.log('Edit category:', categoryId);
+    //console.log('Edit category:', categoryId);
   };
 
   const handleDeleteCategory = async (id) => {
     try {
       const response = await axios.delete(`https://api.thedivastory.com/api/delete-category/${id}`);
-      console.log('Category deleted successfully:', id);
-      console.log(response.data);
+      //console.log('Category deleted successfully:', id);
+      //console.log(response.data);
       fetchData();
       toast.success('Category Deleted')
       // Implement any additional actions after successful deletion

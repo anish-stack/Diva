@@ -11,9 +11,9 @@ exports.ShipRocketLogin = async (req, res) => {
             password: password
         });
 
-        console.log(req.body)
+        //console.log(req.body)
         // Logging the response data
-        console.log(response.data);
+        //console.log(response.data);
 
         // Sending a success response to the client
         return res.status(200).json({
@@ -23,27 +23,27 @@ exports.ShipRocketLogin = async (req, res) => {
         });
     } catch (error) {
         // Handling errors
-        // console.log(error);
+        // //console.log(error);
         if (error.response) {
             // The request was made and the server responded with a status code
             // that falls out of the range of 2xx
-            // console.log(error.response.data);
-            // console.log(error.response.status);
-            // console.log(error.response.headers);
+            // //console.log(error.response.data);
+            // //console.log(error.response.status);
+            // //console.log(error.response.headers);
             return res.status(error.response.status).json({
                 success: false,
                 msg: error.response.data
             });
         } else if (error.request) {
             // The request was made but no response was received
-            console.log(error.request);
+            //console.log(error.request);
             return res.status(500).json({
                 success: false,
                 msg: "No response from ShipRocket server"
             });
         } else {
             // Something happened in setting up the request that triggered an Error
-            console.log('Error', error.message);
+            //console.log('Error', error.message);
             return res.status(500).json({
                 success: false,
                 msg: "Internal Server Error"
@@ -57,7 +57,7 @@ exports.MakeOrderReadyToShip = async (req, res) => {
     try {
         const OrderId = req.params.id;
         const { length, breadth, height, weight, token } = req.body
-        console.log(req.body)
+        //console.log(req.body)
         if (!OrderId) {
             return res.status(403).json({
                 success: false,
@@ -65,7 +65,7 @@ exports.MakeOrderReadyToShip = async (req, res) => {
             });
         }
         const OrderDetail = await Orders.findById(OrderId)
-        // console.log(OrderDetail.UserInfo)
+        // //console.log(OrderDetail.UserInfo)
         const user = OrderDetail.UserInfo
         const Address = OrderDetail.UserDeliveryAddress
         const OrderItems = OrderDetail.items
@@ -107,7 +107,7 @@ exports.MakeOrderReadyToShip = async (req, res) => {
             "weight": weight
         };
 
-        console.log(token)
+        //console.log(token)
         axios.post('https://apiv2.shiprocket.in/v1/external/orders/create/adhoc', data, {
             headers: {
                 'Content-Type': 'application/json',
@@ -115,7 +115,7 @@ exports.MakeOrderReadyToShip = async (req, res) => {
             }
         })
             .then(response => {
-                console.log('Response:', response.data);
+                //console.log('Response:', response.data);
                 // Assuming response.data contains order details from Shiprocket
                 // You can process the response as needed
             })
@@ -138,7 +138,7 @@ exports.MakeOrderReadyToShip = async (req, res) => {
             msg: "Shipping is Done"
         });
     } catch (error) {
-        console.log('Error', error);
+        //console.log('Error', error);
         res.status(500).json({
             success: false,
             msg: "Internal Server Error"

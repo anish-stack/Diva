@@ -19,7 +19,7 @@ const EssentialCollection = () => {
             const res = await axios.get('https://api.thedivastory.com/api/all-redirect');
             setEx(res.data.data);
         } catch (error) {
-            console.log(error);
+            //console.log(error);
         }
     };
 

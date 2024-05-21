@@ -9,7 +9,7 @@ const User = () => {
       try {
         const response = await axios.get('https://api.thedivastory.com/api/All-users');
         setUsers(response.data.users);
-        console.log(response.data)
+        //console.log(response.data)
       } catch (error) {
         console.error('Error fetching users:', error);
       }

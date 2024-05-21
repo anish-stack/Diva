@@ -31,10 +31,10 @@ const Profile = () => {
                     Authorization: `Bearer ${token}`
                 }
             });
-            // console.log(response.data);
+            // //console.log(response.data);
             setOrders(response.data.data);
         } catch (error) {
-            console.log(error);
+            //console.log(error);
         }
     };
 

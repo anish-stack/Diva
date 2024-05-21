@@ -23,11 +23,11 @@ const AllImages = () => {
 
     const handleDelete = async (albumId, imageId) => {
         try {
-            console.log(imageId, albumId)
+            //console.log(imageId, albumId)
             // Send DELETE request to delete the image
             const res = await axios.delete(`https://api.thedivastory.com/api/image/${imageId}`);
             // After successful deletion, update state to reflect changes
-            console.log(res.data)
+            //console.log(res.data)
             toast.success('Image Deleted')
             fetchImages();
         } catch (error) {

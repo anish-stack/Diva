@@ -39,7 +39,7 @@ exports.register = async (req, res) => {
         // If the user was successfully created, send token
         sendToken(user, 201, res);
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         res.status(500).json({
             success: false,
             error: "Internal Server Error"
@@ -77,7 +77,7 @@ exports.LoginUser = async (req, res) => {
         sendToken(existUser, 201, res)
 
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         res.status(500).json({
             success: false,
             error: "Internal Server Error"

@@ -53,7 +53,7 @@ exports.getAllVouchers = async (req,res)=>{
             success:true,
             msg:"Internal Server Error Vouchers Find"
         })
-        console.log(error)
+        //console.log(error)
     }
 }
 // Update an existing voucher

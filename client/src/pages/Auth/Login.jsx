@@ -33,7 +33,7 @@ const Login = () => {
 
         try {
             const response = await axios.post('https://api.thedivastory.com/api/login', formData);
-            console.log(response.data);
+            //console.log(response.data);
             toast.success('Login Successful', {
                 style: {
                     border: '1px solid #00e500',
@@ -46,7 +46,7 @@ const Login = () => {
                 },
             });
 
-            // console.log(formData);
+            // //console.log(formData);
             dispatch(registerSuccess({ user: response.data.user, token: response.data.token }));
             if (cartItems.items.length > 0) {
                 return window.location.href = "/Shopping-Cart"
@@ -56,7 +56,7 @@ const Login = () => {
             }
             
         } catch (error) {
-            console.log(error)
+            //console.log(error)
             dispatch(registerFailure(error.response?.data?.msg || 'Internal Server Error'));
             toast.error(error.response?.data?.msg || 'Internal Server Error', {
                 style: {

@@ -27,7 +27,7 @@ const EditProject = () => {
       try {
         const response = await axios.get(`https://api.thedivastory.com/api/get-products-name/${name}/${id}`);
         const fetchedData = response.data.data;
-        console.log(fetchedData);
+        //console.log(fetchedData);
         // Update formdata with fetched data
         setFormdata({
           productName: fetchedData.productName,
@@ -43,7 +43,7 @@ const EditProject = () => {
           tags: fetchedData.tags,
         });
       } catch (error) {
-        console.log(error);
+        //console.log(error);
       }
     };
     fetchMainData();
@@ -105,7 +105,7 @@ const EditProject = () => {
   const predefinedSizes = ['Small', 'Medium', 'Large', 'XL'];
 
   const handleCheckboxChange = (size) => {
-    console.log(size)
+    //console.log(size)
     setFormdata((prevState) => {
       const sizes = prevState.sizes.includes(size)
         ? prevState.sizes.filter((s) => s !== size)
@@ -117,11 +117,11 @@ const EditProject = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoad(true);
-    console.log(formdata)
+    //console.log(formdata)
     try {
       // Make Axios request
       const response = await axios.patch(`https://api.thedivastory.com/api/update-products/${id}`, formdata);
-      console.log(response.data); // Assuming you want to log the response
+      //console.log(response.data); // Assuming you want to log the response
       toast.success('Product Updated');
       setLoad(false);
     } catch (error) {
@@ -152,7 +152,7 @@ const EditProject = () => {
     const fetchDataCat = async () => {
       try {
         const response = await axios.get('https://api.thedivastory.com/api/get-all-main-category');
-        console.log(response.data.data);
+        //console.log(response.data.data);
         setCategories(response.data.data);
         setIsLoading(false);
       } catch (error) {
@@ -246,7 +246,7 @@ const EditProject = () => {
           <div className='mb-4 flex gap-2 '>
             {predefinedSizes.map((size, index) => (
               <div key={index} className='mb-2 justify-center'>
-                {/* {console.log(formdata.sizes)} */}
+                {/* {//console.log(formdata.sizes)} */}
                 <input
                   type='checkbox'
                   id={`size-${index}`}

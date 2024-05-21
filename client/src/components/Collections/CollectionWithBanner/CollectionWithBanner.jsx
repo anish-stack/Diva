@@ -9,10 +9,10 @@ const CollectionWithBanner = () => {
   const fetchBanners = async()=>{
     try {
       const res = await axios.get('https://api.thedivastory.com/api/get-sales-Banners') 
-      console.log(res.data.data)
+      //console.log(res.data.data)
       setBanners(res.data.data)
     } catch (error) {
-      console.log(error)
+      //console.log(error)
     }
   }
   useEffect(()=>{
@@ -21,10 +21,10 @@ const CollectionWithBanner = () => {
   return (
     <div className='w-full py-3'>
     <div className='max-w-[1400px] mx-auto mt-5 p-2'>
-      <div className='grid grid-cols-1  space-x-3 gap-2 md:grid-cols-2'>
+      <div className='grid grid-cols-1  md:space-x-3 gap-2 md:grid-cols-3'>
         {banners && banners.map((items, index) => (
-          <div key={index} className='w-full hover:shadow-2xl rounded-xl relative'>
-            <img src={items.image} className='w-full h-[70vh] object-cover object-center rounded-xl' alt="" />
+          <div key={index} className=' w-full md:w-[400px] h-[400px] hover:shadow-2xl rounded-xl relative'>
+            <img src={items.image} className='w-full h-full  md:h-[400px] object-fill object-center rounded-xl' alt="" />
             {/* <div className="absolute inset-0 bg-black opacity-50 rounded-xl"></div> */}
             <div className='absolute inset-0  flex flex-col justify-end items-center text-center'>
               <div className='z-20 mb-5'>

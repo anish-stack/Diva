@@ -17,7 +17,7 @@ const OrderDetails = () => {
       try {
         const response = await axios.get(`https://sbackend-oedj.onrender.com/api/single-orders/${id}`);
         setOrder(response.data.data);
-        console.log(response.data.data)
+        //console.log(response.data.data)
       } catch (error) {
         console.error('Error fetching order details:', error);
       }
@@ -34,7 +34,7 @@ const OrderDetails = () => {
   //     });
   //     setStatusUpdated(true);
 
-  //     console.log(res.data)
+  //     //console.log(res.data)
   //   } catch (error) {
   //     console.error('Error updating order status:', error);
   //   }
@@ -46,10 +46,10 @@ const OrderDetails = () => {
   // const handlePrint = async (id) => {
   //   try {
   //     const res = await axios.get(`https://api.thedivastory.com/api/finduserbyid/${id}`);
-  //     console.log(res.data.data);
+  //     //console.log(res.data.data);
   //     setUser(res.data.data)
   //   } catch (error) {
-  //     console.log(error);
+  //     //console.log(error);
   //   }
   // };
 

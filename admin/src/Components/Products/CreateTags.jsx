@@ -25,10 +25,10 @@ const CreateTags = () => {
     try {
       // Send form data to server or perform other actions as needed
       const res = await axios.post('https://api.thedivastory.com/api/Make-tags',formData)
-      console.log('Tags created successfully!', formData);
+      //console.log('Tags created successfully!', formData);
       // Reset form after successful submission
       toast.success("Tags created successfully!")
-      // console.log(res.data)
+      // //console.log(res.data)
       setFormData({
         title: '',
         CatImg: '',

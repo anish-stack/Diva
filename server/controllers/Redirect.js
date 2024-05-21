@@ -67,7 +67,7 @@ exports.GetAllRedirectCat = async (req, res) => {
             msg: 'Found Success'
         });
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         res.status(500).json({
             success: false,
             msg: 'Internal Server Error'

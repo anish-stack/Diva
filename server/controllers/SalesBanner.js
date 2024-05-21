@@ -22,7 +22,7 @@ exports.createSalesBanner = async (req, res) => {
 
         // Uploading the banner image to Cloudinary
         const forBannerImage = await cloudinary.uploader.upload(tempFilePath);
-        // console.log(forBannerImage);
+        // //console.log(forBannerImage);
 
         // Creating the banner object
         const newBanner = new SalesBanner({
@@ -45,7 +45,7 @@ exports.createSalesBanner = async (req, res) => {
             data: newBanner
         });
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         return res.status(500).json({
             success: false,
             msg: "Internal Server Error"
@@ -60,7 +60,7 @@ exports.getAllSalesBanners = async (req, res) => {
             data: banners
         });
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         return res.status(500).json({
             success: false,
             msg: "Internal Server Error"
@@ -87,7 +87,7 @@ exports.deleteSalesBanner = async (req, res) => {
             msg: "Banner deleted successfully"
         });
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         return res.status(500).json({
             success: false,
             msg: "Internal Server Error"

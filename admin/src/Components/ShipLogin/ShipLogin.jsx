@@ -11,7 +11,7 @@ function ShipLogin() {
                 email: Email,
                 password: Password
             });
-            console.log(response.data.data)
+            //console.log(response.data.data)
 
             const Auth = response.data.data.token
             sessionStorage.setItem('S-token', Auth)

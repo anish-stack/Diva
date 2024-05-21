@@ -10,7 +10,7 @@ const WeeksHighlight = () => {
     const [items, setItems] = useState(false)
     const { data, status, error } = useSelector((state) => state.product);
 
-    console.log(data)
+    //console.log(data)
     useEffect(() => {
         // Dispatch the fetchData thunk when the component mounts
         dispatch(fetchData());
@@ -18,8 +18,8 @@ const WeeksHighlight = () => {
 
     const handleShowQuickView = (item, index) => {
         setShowQucikView(true)
-        console.log("Item", item)
-        console.log("index", index)
+        //console.log("Item", item)
+        //console.log("index", index)
         setItems(item)
 
     }

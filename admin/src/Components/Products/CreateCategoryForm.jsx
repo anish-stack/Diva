@@ -30,14 +30,14 @@ const CreateCategoryForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-// console.log(formData)
+// //console.log(formData)
     try {
       const formDataToSend = new FormData(); // Create a new FormData object
       formDataToSend.append('title', formData.title); // Append title
       formDataToSend.append('images', formData.file); // Append file
       formDataToSend.append('MainCategory', formData.MainCategory); // Append file
 
-      console.log(formDataToSend)
+      //console.log(formDataToSend)
       const response = await axios.post(
         "https://api.thedivastory.com/api/create-category",
         formDataToSend,{
@@ -47,7 +47,7 @@ const CreateCategoryForm = () => {
         }
       );
       toast.success('Category Created')
-      console.log(response.data);
+      //console.log(response.data);
       setMessage("Category created successfully!");
 
     } catch (error) {

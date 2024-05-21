@@ -5,9 +5,10 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import payment from '../../../assets/payment.png';
 import Loader from './Loader';
+import { Link } from 'react-router-dom';
 
 const QuickView = ({ showQuickView, item, handleClose }) => {
-    console.log(item)
+    //console.log(item)
     const settings = {
         dots: true,
         infinite: true,
@@ -39,7 +40,7 @@ const QuickView = ({ showQuickView, item, handleClose }) => {
     }, [item]);
 
     const hanldeClick = (sizes) => {
-        console.log(sizes)
+        //console.log(sizes)
         setSizePrize(sizes)
     }
     const handleIncrement = () => {
@@ -71,46 +72,46 @@ const QuickView = ({ showQuickView, item, handleClose }) => {
                             <div className='imgs w-full  md:overflow-hidden'>
                                 <Slider {...settings}>
                                     <div className=' h-[100%]'>
-                                        <img src={item.img} className='w-full h-64 md:h-full object-center object-contain' alt="" />
+                                        <img src={item.img} className='w-full h-64 md:h-full object-center object-cover' alt="" />
                                     </div>
                                     <div className='h-[100%]'>
-                                        <img src={item.secondImg} className='w-full h-64 md:h-full object-center object-contain' alt="" />
+                                        <img src={item.secondImg} className='w-full h-64 md:h-full object-center object-cover' alt="" />
                                     </div>
                                     <div className='h-[100%]'>
-                                        <img src={item.thirdimage} className='w-full h-64 md:h-full object-center object-contain' alt="" />
+                                        <img src={item.thirdimage} className='w-full h-64 md:h-full object-center object-cover' alt="" />
                                     </div>
                                     <div className='h-[100%]'>
-                                        <img src={item.fourthImage} className='w-full h-64 md:h-full object-center object-contain' alt="" />
+                                        <img src={item.fourthImage} className='w-full h-64 md:h-full object-center object-cover' alt="" />
                                     </div>
                                 </Slider>
                             </div>
                             <div className='w-full overflow-scroll'>
                                 <div className='w-full px-3'>
                                     <p className='text-xl font-bold mt-5'>{item.productName}</p>
-                                    <h3 className='text-xl font-bold text-red-500'>
+                                    {/* <h3 className='text-xl font-bold text-red-500'>
                                         <del className='text-gray-300 font-thin'>{sizesPrize ? sizesPrize.mainPrice || item.sizes[0].mainPrice : item.sizes[0].mainPrice}</del> {sizesPrize ? (sizesPrize.discountPrice ? sizesPrize.discountPrice : item.sizes[0].discountPrice) : item.sizes[0].discountPrice}
-                                    </h3>
+                                    </h3> */}
                                     <hr className='mt-2' />
                                     <div className='w-5/5 mt-2'>
-                                        <p className='text-sm hidden md:block text-gray-500 font-medium'>{item.description}</p>
+                                        <p className='text-sm  md:block text-gray-500 font-medium'>{item.description}</p>
                                     </div>
-                                    <div className='sizes flex items-start  gap-3 mt-2 ml-2'>
+                                    {/* <div className='sizes flex items-start  gap-3 mt-2 ml-2'>
                                         {item.sizes.map((sizes, index) => (
                                             <div onClick={() => hanldeClick(sizes)} className='bg-[#9680A6] rounded-[10px] cursor-pointer py-1 px-5 text-white' key={index}>{sizes.size}</div>
                                         ))}
-                                    </div>
+                                    </div> */}
                                     <div className='flex items-center overflow-scroll justify-between'>
-                                        <div className="counter mt-5  w-[30%]">
+                                        {/* <div className="counter mt-5  w-[30%]">
                                             <div className="flex justify-between border-2 w-[136px] md:w-full rounded-[40px] border-black items-center">
                                                 <button onClick={handleDecrement} className="  font-extrabold text-lg text-gray-900 px-5 py-1 rounded-md ml-2">-</button>
                                                 <span className='text-lg font-bold'>{quantity}</span>
                                                 <button onClick={handleIncrement} className="  font-extrabold text-lg text-gray-900 px-5 py-1 rounded-md mr-2">+</button>
                                             </div>
-                                        </div>
+                                        </div> */}
 
                                         <div className="counter mt-5 w-[50%]">
                                             <div className="flex border-2 wfull rounded-[40px] border-white items-center">
-                                                <button className='py-2 w-full rounded-[40px] bg-gray-900 text-white'>Add To Cart</button>
+                                                <Link to={`/single-product/${item._id}/${item.productName}`} className='py-2 px-2 w-full rounded-[40px] bg-gray-900 text-white'>Add To Cart</Link>
                                             </div>
                                         </div>
                                     </div>

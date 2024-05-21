@@ -25,11 +25,11 @@ useEffect(()=>{
     try {
       const res = await axios.delete(`https://api.thedivastory.com/api/delete-sales-Banners/${id}`);
       alert('Banner Deleted Successfully');
-      console.log(res.data);
+      //console.log(res.data);
       // Refresh banners after deletion
       fetchData();
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 

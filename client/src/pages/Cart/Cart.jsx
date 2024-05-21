@@ -8,7 +8,7 @@ const Cart = () => {
     const cartItems = useSelector(state => state.cart);
     const User = useSelector(state => state.register)
 
-    console.log(cartItems.items);
+    //console.log(cartItems.items);
     const [Cart, setCart] = useState([])
     useEffect(() => {
         setCart(cartItems.items)
@@ -70,7 +70,7 @@ const Cart = () => {
 
 
         } catch (error) {
-            console.log(error)
+            //console.log(error)
 
             // Handle any errors that occur during checkout
         }
@@ -82,7 +82,7 @@ const Cart = () => {
         const totalPrice = total + (item.discountPrice * item.quantity);
         return Math.round(totalPrice);
       }, 0);
-    console.log(Totalprices)
+    //console.log(Totalprices)
     const [formData, setFormData] = useState({
         CouponeCode: '',
         orderTotal: 0 // Initialize orderTotal to 0
@@ -103,14 +103,14 @@ const Cart = () => {
     const [message,setmessage] = useState('')
       const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent default form submission behavior
-        console.log(formData);
+        //console.log(formData);
         try {
           const res = await axios.post('https://api.thedivastory.com/api/apply-vouchers', formData);
           const RoundTotal = Math.round(res.data.data.discountedTotal)
           setLastprice(RoundTotal);
           setmessage('Coupon is Applied Successfull')
         } catch (error) {
-          console.log(error);
+          //console.log(error);
           toast.error(error.response.data.error)
           setmessage('')
 

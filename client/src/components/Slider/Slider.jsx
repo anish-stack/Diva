@@ -16,7 +16,7 @@ const CustomSlider = () => {
             setSlider(response.data.data);
             setLoading(false);
         } catch (error) {
-            console.log(error);
+            //console.log(error);
             setLoading(false);
         }
     }
@@ -46,7 +46,7 @@ const CustomSlider = () => {
     }
 
     return (
-        <div className='max-w-[1600px] mx-auto'>
+        <div className='max-w-[1600px] overflow-hidden mx-auto'>
             <Slider {...settings}>
                 {slider && slider.map((slide, index) => (
                     <div 
